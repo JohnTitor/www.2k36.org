@@ -42,6 +42,11 @@
           "isPreviewImage": true
         },
         {
+          "title": "og image",
+          "name": "ogImage",
+          "type": "string"
+        },
+        {
           "title": "tags",
           "name": "tags",
           "type": "list"

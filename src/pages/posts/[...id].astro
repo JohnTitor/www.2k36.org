@@ -22,34 +22,9 @@ export async function getStaticPaths() {
 	}));
 }
 
-const images: Record<string, string | { src: string }> = import.meta.glob(
-	"/src/content/posts/**/*.{jpg,jpeg,png,gif,webp}",
-	{ eager: true, import: "default" },
-);
-
-function resolveCoverImage(
-	frontmatterImage: string,
-): string | { src: string } | null {
-	if (!frontmatterImage) return null;
-
-	const resolvedPath = path.join(
-		"/src/content/posts",
-		frontmatterImage.replace(/^\.\/+/, ""),
-	);
-
-	return images[resolvedPath] || null;
-}
-
 const { entry } = Astro.props;
 
-const coverOptimized = resolveCoverImage(entry.data.image);
-const resolvedUrl =
-	coverOptimized &&
-	typeof coverOptimized === "object" &&
-	"src" in coverOptimized
-		? coverOptimized.src
-		: (coverOptimized as string);
-const ogImageUrl = resolvedUrl ? new URL(resolvedUrl, Astro.url).href : "";
+const ogImageUrl = entry.data.ogImage || `/og/${entry.id}.png`;
 
 const { Content, headings } = await render(entry);
 
