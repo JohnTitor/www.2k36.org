@@ -35,6 +35,7 @@
     "@iconify-json/line-md": "^1.2.8",
     "@iconify-json/material-symbols": "^1.2.24",
     "@iconify/svelte": "^5.0.0",
+    "@napi-rs/canvas": "^0.1.74",
     "@swup/astro": "^1.6.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.13",
