@@ -78,5 +78,5 @@
     "@types/sanitize-html": "^2.16.0",
     "node-fetch": "^3.3.0"
   },
-  "packageManager": "pnpm@10.28.1"
+  "packageManager": "pnpm@10.28.2"
 }
