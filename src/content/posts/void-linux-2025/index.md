@@ -1,12 +1,12 @@
 ---
 published: 2025-10-03
-title: 'Void Linuxに移住したときの備忘録 2025'
+title: "Void Linuxに移住したときの備忘録 2025"
 tags: [diary, japanese]
-description: 'Void Linuxに移住したときの備忘録 2025'
-category: 'diary'
-image: ''
+description: "Void Linuxに移住したときの備忘録 2025"
+category: "diary"
+image: ""
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 一念発起してWindowsからVoid Linuxに移住した。
@@ -84,6 +84,7 @@ sudo ln -s /etc/sv/sddm /var/service/
 ```bash
 sudo reboot
 ```
+
 NvidiaまわりはX11だと特に設定せず使えたのだが、さすがに2025年にWaylandを使わないのはアレなので色々試行錯誤した。
 
 ## 音声問題

@@ -2,29 +2,32 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
+import type { ArchivePost } from "@/types/archive";
 
-async function getSortedPostsInternal(locale?: string) {
-	const allBlogPosts = await getCollection("posts", ({ data, id }) => {
-		// Filter by locale if provided
-		if (locale === "en") {
-			if (!id.startsWith("en/")) return false;
-		} else if (locale === "ja" || !locale) {
-			// For Japanese (default), exclude English posts
-			if (id.startsWith("en/")) return false;
-		}
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+async function getSortedPostsInternal(locale?: string): Promise<CollectionEntry<"posts">[]> {
+	const allBlogPosts: CollectionEntry<"posts">[] = await getCollection(
+		"posts",
+		(entry: CollectionEntry<"posts">) => {
+			const { data, id } = entry;
+			// Filter by locale if provided
+			if (locale === "en") {
+				if (!id.startsWith("en/")) return false;
+			} else if (locale === "ja" || !locale) {
+				// For Japanese (default), exclude English posts
+				if (id.startsWith("en/")) return false;
+			}
+			return import.meta.env.PROD ? data.draft !== true : true;
+		},
+	);
 
-	return allBlogPosts.sort((a, b) => {
+	return allBlogPosts.sort((a: CollectionEntry<"posts">, b: CollectionEntry<"posts">) => {
 		const dateA = new Date(a.data.published);
 		const dateB = new Date(b.data.published);
 		return dateA > dateB ? -1 : 1;
 	});
 }
 
-export async function getSortedPosts(
-	locale?: string,
-): Promise<CollectionEntry<"posts">[]> {
+export async function getSortedPosts(locale?: string): Promise<CollectionEntry<"posts">[]> {
 	const sorted = await getSortedPostsInternal(locale);
 
 	for (let i = 1; i < sorted.length; i++) {
@@ -39,16 +42,18 @@ export async function getSortedPosts(
 	return sorted;
 }
 
-export async function getSortedPostsMetadata(
-	locale?: string,
-): Promise<Omit<CollectionEntry<"posts">, "body" | "render">[]> {
+export async function getSortedPostsMetadata(locale?: string): Promise<ArchivePost[]> {
 	const sorted = await getSortedPostsInternal(locale);
 
 	// Return posts with metadata only (excluding body content)
 	return sorted.map((post) => ({
 		id: post.id,
-		data: post.data,
-		collection: post.collection,
+		data: {
+			title: post.data.title,
+			tags: post.data.tags,
+			category: post.data.category,
+			published: post.data.published,
+		},
 	}));
 }
 
@@ -58,16 +63,20 @@ export type Tag = {
 };
 
 export async function getTagList(locale?: string): Promise<Tag[]> {
-	const allBlogPosts = await getCollection<"posts">("posts", ({ data, id }) => {
-		// Filter by locale if provided
-		if (locale === "en") {
-			if (!id.startsWith("en/")) return false;
-		} else if (locale === "ja" || !locale) {
-			// For Japanese (default), exclude English posts
-			if (id.startsWith("en/")) return false;
-		}
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts: CollectionEntry<"posts">[] = await getCollection(
+		"posts",
+		(entry: CollectionEntry<"posts">) => {
+			const { data, id } = entry;
+			// Filter by locale if provided
+			if (locale === "en") {
+				if (!id.startsWith("en/")) return false;
+			} else if (locale === "ja" || !locale) {
+				// For Japanese (default), exclude English posts
+				if (id.startsWith("en/")) return false;
+			}
+			return import.meta.env.PROD ? data.draft !== true : true;
+		},
+	);
 
 	const countMap: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { tags: string[] } }) => {
@@ -92,16 +101,20 @@ export type Category = {
 };
 
 export async function getCategoryList(locale?: string): Promise<Category[]> {
-	const allBlogPosts = await getCollection<"posts">("posts", ({ data, id }) => {
-		// Filter by locale if provided
-		if (locale === "en") {
-			if (!id.startsWith("en/")) return false;
-		} else if (locale === "ja" || !locale) {
-			// For Japanese (default), exclude English posts
-			if (id.startsWith("en/")) return false;
-		}
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts: CollectionEntry<"posts">[] = await getCollection(
+		"posts",
+		(entry: CollectionEntry<"posts">) => {
+			const { data, id } = entry;
+			// Filter by locale if provided
+			if (locale === "en") {
+				if (!id.startsWith("en/")) return false;
+			} else if (locale === "ja" || !locale) {
+				// For Japanese (default), exclude English posts
+				if (id.startsWith("en/")) return false;
+			}
+			return import.meta.env.PROD ? data.draft !== true : true;
+		},
+	);
 	const count: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { category: string | null } }) => {
 		if (!post.data.category) {

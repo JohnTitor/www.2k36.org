@@ -1,12 +1,12 @@
 ---
 published: 2024-01-14
-title: 'diary: 20240114'
+title: "diary: 20240114"
 tags: [diary, japanese]
-description: 'diary: 20240114'
-category: 'diary'
-image: ''
+description: "diary: 20240114"
+category: "diary"
+image: ""
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 「お、お嬢様！私も成長して最近はリセットすることもなくなりました！」

@@ -1,12 +1,12 @@
 ---
 published: 2022-12-23
-title: 'The state of @JohnTitor, 2022'
+title: "The state of @JohnTitor, 2022"
 tags: [report]
-description: 'The state of @JohnTitor, 2022'
-category: 'report'
-image: './state-of-2022/contributions2022.png'
+description: "The state of @JohnTitor, 2022"
+category: "report"
+image: "./state-of-2022/contributions2022.png"
 draft: false
-lang: 'en'
+lang: "en"
 ---
 
 ## The stats

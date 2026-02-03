@@ -1,13 +1,14 @@
 ---
 published: 2024-01-01
-title: 'The state of @JohnTitor, 2023'
-tags: ['report']
-description: 'The state of @JohnTitor, 2023'
-category: 'report'
-image: ''
+title: "The state of @JohnTitor, 2023"
+tags: ["report"]
+description: "The state of @JohnTitor, 2023"
+category: "report"
+image: ""
 draft: false
-lang: 'en'
+lang: "en"
 ---
+
 > [!WARNING]
 > This article is translated by AI and may contain a serious mistake.
 

@@ -1,101 +1,101 @@
 [
-  {
-    "username": "freddi-kit",
-    "name": "freddi(Yuki Aki)",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/13707872?u=61d25888cfa13a78a2cd311bb5e2707e09ad895b&v=4",
-    "tier": {
-      "name": "$10 a month",
-      "monthlyPriceInDollars": 10
-    }
-  },
-  {
-    "username": "himanoa",
-    "name": "himanoa",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/18651963?u=cccfad5bfe75be90b9aebea45394c2d2fd371c46&v=4",
-    "tier": {
-      "name": "$10 a month",
-      "monthlyPriceInDollars": 10
-    }
-  },
-  {
-    "username": "uta8a",
-    "name": "Masanori Tani",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/31395466?u=e7d8d93ddff45aec7ac5e0cdbf631cfd2ec0ab1d&v=4",
-    "tier": {
-      "name": "$3 a month",
-      "monthlyPriceInDollars": 3
-    }
-  },
-  {
-    "username": "tasshi-me",
-    "name": "tasshi / Masaharu Tashiro",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/33759872?u=3cfac0b253f1c11f40a6f25f57260fd1fd6f42f5&v=4",
-    "tier": {
-      "name": "$1 a month",
-      "monthlyPriceInDollars": 1
-    }
-  },
-  {
-    "username": "upsuper",
-    "name": "Xidorn Quan",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/333750?u=651316a0bc85f3978374a78ad6606030ce20be1f&v=4",
-    "tier": {
-      "name": "$1 a month",
-      "monthlyPriceInDollars": 1
-    }
-  },
-  {
-    "username": "nazar-pc",
-    "name": "Nazar Mokrynskyi",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/928965?u=f5d781ca0eb5cb5c7ce9e5ee5d3b24dae3d6e987&v=4",
-    "tier": {
-      "name": "$2 a month",
-      "monthlyPriceInDollars": 2
-    }
-  },
-  {
-    "username": "robjtede",
-    "name": "Rob Ede",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/3316789?u=5b6d5b45b7a2755584d2c57ecabf56f3eb292e21&v=4",
-    "tier": {
-      "name": "$1 a month",
-      "monthlyPriceInDollars": 1
-    }
-  },
-  {
-    "username": "dorayakikun",
-    "name": "Tomohide Takao",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/6278699?u=7fda067a584515dbcc6929a57411ecaa9278eb2e&v=4",
-    "tier": {
-      "name": "$5 a month",
-      "monthlyPriceInDollars": 5
-    }
-  },
-  {
-    "username": "elpiel",
-    "name": "Lachezar Lechev",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/8925621?u=800b7866cc7cbf27c6afa8831aa49f8cd249ae86&v=4",
-    "tier": {
-      "name": "$1 a month",
-      "monthlyPriceInDollars": 1
-    }
-  },
-  {
-    "username": "centerfield77",
-    "name": "Tatsunori Nakano",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/69037957?u=53e108f17fcb2a8d3767593e9c5f882207b970ea&v=4",
-    "tier": {
-      "name": "$5 a month",
-      "monthlyPriceInDollars": 5
-    }
-  },
-  {
-    "username": "0xquantech",
-    "name": "Q",
-    "profilePicUrl": "https://avatars.githubusercontent.com/u/92380384?u=60969d7e2ad17558c26b1d3e0dd95bda3fe7b086&v=4",
-    "tier": {
-      "name": "$1 a month",
-      "monthlyPriceInDollars": 1
-    }
-  }
+	{
+		"username": "freddi-kit",
+		"name": "freddi(Yuki Aki)",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/13707872?u=61d25888cfa13a78a2cd311bb5e2707e09ad895b&v=4",
+		"tier": {
+			"name": "$10 a month",
+			"monthlyPriceInDollars": 10
+		}
+	},
+	{
+		"username": "himanoa",
+		"name": "himanoa",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/18651963?u=cccfad5bfe75be90b9aebea45394c2d2fd371c46&v=4",
+		"tier": {
+			"name": "$10 a month",
+			"monthlyPriceInDollars": 10
+		}
+	},
+	{
+		"username": "uta8a",
+		"name": "Masanori Tani",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/31395466?u=e7d8d93ddff45aec7ac5e0cdbf631cfd2ec0ab1d&v=4",
+		"tier": {
+			"name": "$3 a month",
+			"monthlyPriceInDollars": 3
+		}
+	},
+	{
+		"username": "tasshi-me",
+		"name": "tasshi / Masaharu Tashiro",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/33759872?u=3cfac0b253f1c11f40a6f25f57260fd1fd6f42f5&v=4",
+		"tier": {
+			"name": "$1 a month",
+			"monthlyPriceInDollars": 1
+		}
+	},
+	{
+		"username": "upsuper",
+		"name": "Xidorn Quan",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/333750?u=651316a0bc85f3978374a78ad6606030ce20be1f&v=4",
+		"tier": {
+			"name": "$1 a month",
+			"monthlyPriceInDollars": 1
+		}
+	},
+	{
+		"username": "nazar-pc",
+		"name": "Nazar Mokrynskyi",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/928965?u=f5d781ca0eb5cb5c7ce9e5ee5d3b24dae3d6e987&v=4",
+		"tier": {
+			"name": "$2 a month",
+			"monthlyPriceInDollars": 2
+		}
+	},
+	{
+		"username": "robjtede",
+		"name": "Rob Ede",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/3316789?u=5b6d5b45b7a2755584d2c57ecabf56f3eb292e21&v=4",
+		"tier": {
+			"name": "$1 a month",
+			"monthlyPriceInDollars": 1
+		}
+	},
+	{
+		"username": "dorayakikun",
+		"name": "Tomohide Takao",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/6278699?u=7fda067a584515dbcc6929a57411ecaa9278eb2e&v=4",
+		"tier": {
+			"name": "$5 a month",
+			"monthlyPriceInDollars": 5
+		}
+	},
+	{
+		"username": "elpiel",
+		"name": "Lachezar Lechev",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/8925621?u=800b7866cc7cbf27c6afa8831aa49f8cd249ae86&v=4",
+		"tier": {
+			"name": "$1 a month",
+			"monthlyPriceInDollars": 1
+		}
+	},
+	{
+		"username": "centerfield77",
+		"name": "Tatsunori Nakano",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/69037957?u=53e108f17fcb2a8d3767593e9c5f882207b970ea&v=4",
+		"tier": {
+			"name": "$5 a month",
+			"monthlyPriceInDollars": 5
+		}
+	},
+	{
+		"username": "0xquantech",
+		"name": "Q",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/92380384?u=60969d7e2ad17558c26b1d3e0dd95bda3fe7b086&v=4",
+		"tier": {
+			"name": "$1 a month",
+			"monthlyPriceInDollars": 1
+		}
+	}
 ]

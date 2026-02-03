@@ -23,26 +23,17 @@ export function getPostUrlById(id: string): string {
 
 export function getTagUrl(tag: string, locale?: string): string {
 	if (!tag) return getLocalizedUrl("/archive/", locale);
-	return getLocalizedUrl(
-		`/archive/?tag=${encodeURIComponent(tag.trim())}`,
-		locale,
-	);
+	return getLocalizedUrl(`/archive/?tag=${encodeURIComponent(tag.trim())}`, locale);
 }
 
-export function getCategoryUrl(
-	category: string | null,
-	locale?: string,
-): string {
+export function getCategoryUrl(category: string | null, locale?: string): string {
 	if (
 		!category ||
 		category.trim() === "" ||
 		category.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
 	)
 		return getLocalizedUrl("/archive/?uncategorized=true", locale);
-	return getLocalizedUrl(
-		`/archive/?category=${encodeURIComponent(category.trim())}`,
-		locale,
-	);
+	return getLocalizedUrl(`/archive/?category=${encodeURIComponent(category.trim())}`, locale);
 }
 
 export function getDir(path: string): string {

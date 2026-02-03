@@ -1,12 +1,12 @@
 ---
 published: 2025-06-14
-title: '転職2025'
+title: "転職2025"
 tags: [diary, japanese]
-description: '転職をしたときの記録2025'
-category: 'diary'
-image: './20250614/left.png'
+description: "転職をしたときの記録2025"
+category: "diary"
+image: "./20250614/left.png"
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 2025年4月末で株式会社カナリーを退職し、5月にMOSH株式会社に入社しました。そろそろ落ち着いたので退職・転職エントリを拵えようと思います。

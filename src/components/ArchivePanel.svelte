@@ -4,29 +4,17 @@ import { onMount } from "svelte";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getPostUrlById } from "../utils/url-utils";
+import type { ArchivePost } from "../types/archive";
 
 export let tags: string[] = [];
 export let categories: string[] = [];
-export let sortedPosts: Post[] = [];
+export let sortedPosts: ArchivePost[] = [];
 
 let uncategorized: string | null = null;
 
-interface Post {
-	id: string;
-	data: {
-		title: string;
-		tags: string[];
-		category?: string;
-		published: Date;
-		zennPath?: string;
-		liked?: number;
-		bookmarked?: number;
-	};
-}
-
 interface Group {
 	year: number;
-	posts: Post[];
+	posts: ArchivePost[];
 }
 
 let groups: Group[] = [];
@@ -47,7 +35,7 @@ onMount(async () => {
 	categories = params.has("category") ? params.getAll("category") : [];
 	uncategorized = params.get("uncategorized");
 
-	let filteredPosts: Post[] = sortedPosts;
+	let filteredPosts: ArchivePost[] = sortedPosts;
 
 	if (tags.length > 0) {
 		filteredPosts = filteredPosts.filter(
@@ -76,7 +64,7 @@ onMount(async () => {
 			acc[year].push(post);
 			return acc;
 		},
-		{} as Record<number, Post[]>,
+		{} as Record<number, ArchivePost[]>,
 	);
 
 	const groupedPostsArray = Object.keys(grouped).map((yearStr) => ({

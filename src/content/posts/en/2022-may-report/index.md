@@ -1,13 +1,14 @@
 ---
 published: 2022-06-18
-title: 'Contribution report for May 2022'
-tags: ['report']
-description: 'A contribution report for May 2022, by @JohnTitor.'
-category: 'report'
-image: ''
+title: "Contribution report for May 2022"
+tags: ["report"]
+description: "A contribution report for May 2022, by @JohnTitor."
+category: "report"
+image: ""
 draft: false
-lang: 'en'
+lang: "en"
 ---
+
 > [!WARNING]
 > This article is translated by AI and may contain a serious mistake.
 

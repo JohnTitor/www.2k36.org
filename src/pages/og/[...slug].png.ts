@@ -16,9 +16,7 @@ const TITLE_MIN_SIZE = 44;
 const TITLE_LINE_HEIGHT = 1.25;
 const FONT_FAMILY = "IPAGothic";
 
-const fontPath = fileURLToPath(
-	new URL("../../assets/og/fonts/ipag.ttf", import.meta.url),
-);
+const fontPath = fileURLToPath(new URL("../../assets/og/fonts/ipag.ttf", import.meta.url));
 GlobalFonts.registerFromPath(fontPath, FONT_FAMILY);
 
 function normalizeTitle(title: string): string {
@@ -34,11 +32,7 @@ function splitTokens(text: string): { tokens: string[]; joiner: string } {
 	return { tokens: Array.from(normalized), joiner: "" };
 }
 
-function breakToken(
-	ctx: SKRSContext2D,
-	token: string,
-	maxWidth: number,
-): string[] {
+function breakToken(ctx: SKRSContext2D, token: string, maxWidth: number): string[] {
 	const chars = Array.from(token);
 	const parts: string[] = [];
 	let current = "";
@@ -60,11 +54,7 @@ function breakToken(
 	return parts;
 }
 
-function buildLines(
-	ctx: SKRSContext2D,
-	text: string,
-	maxWidth: number,
-): string[] {
+function buildLines(ctx: SKRSContext2D, text: string, maxWidth: number): string[] {
 	const { tokens, joiner } = splitTokens(text);
 	if (tokens.length === 0) return [];
 	const lines: string[] = [];
@@ -187,11 +177,14 @@ function drawTitle(ctx: SKRSContext2D, title: string): void {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = await getCollection("posts", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const posts: CollectionEntry<"posts">[] = await getCollection(
+		"posts",
+		(entry: CollectionEntry<"posts">) => {
+			return import.meta.env.PROD ? entry.data.draft !== true : true;
+		},
+	);
 
-	return posts.map((entry) => ({
+	return posts.map((entry: CollectionEntry<"posts">) => ({
 		params: { slug: entry.id },
 		props: { entry },
 	}));
@@ -200,14 +193,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const GET: APIRoute = async ({ params, props }) => {
 	let entry = props?.entry as CollectionEntry<"posts"> | undefined;
 	if (!entry) {
-		const slug = Array.isArray(params.slug)
-			? params.slug.join("/")
-			: params.slug;
+		const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 		if (slug) {
-			const posts = await getCollection("posts", ({ data }) => {
-				return import.meta.env.PROD ? data.draft !== true : true;
-			});
-			entry = posts.find((post) => post.id === slug);
+			const posts: CollectionEntry<"posts">[] = await getCollection(
+				"posts",
+				(post: CollectionEntry<"posts">) => {
+					return import.meta.env.PROD ? post.data.draft !== true : true;
+				},
+			);
+			entry = posts.find((post: CollectionEntry<"posts">) => post.id === slug);
 		}
 	}
 	if (!entry) {
@@ -215,9 +209,7 @@ export const GET: APIRoute = async ({ params, props }) => {
 	}
 
 	const title = normalizeTitle(entry.data.title) || siteConfig.title;
-	const published = entry.data.published
-		? formatDateToYYYYMMDD(entry.data.published)
-		: "";
+	const published = entry.data.published ? formatDateToYYYYMMDD(entry.data.published) : "";
 
 	const canvas = createCanvas(WIDTH, HEIGHT);
 	const ctx = canvas.getContext("2d");

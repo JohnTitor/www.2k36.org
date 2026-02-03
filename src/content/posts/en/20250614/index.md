@@ -1,13 +1,14 @@
 ---
 published: 2025-06-14
-title: 'Job Change 2025'
+title: "Job Change 2025"
 tags: [diary]
-description: 'Notes on changing jobs in 2025'
-category: 'diary'
-image: './20250614/left.png'
+description: "Notes on changing jobs in 2025"
+category: "diary"
+image: "./20250614/left.png"
 draft: false
-lang: 'en'
+lang: "en"
 ---
+
 > [!WARNING]
 > This article is translated by AI and may contain a serious mistake.
 

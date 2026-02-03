@@ -1,9 +1,7 @@
 {
-  "origins": [
-    "https://www.2k36.org"
-  ],
-  "originsRegex": [
-    "https://2k36-git-([A-z0-9]|-)*yuki-okushis-projects\\.vercel\\.app",
-    "http://localhost:[0-9]+"
-  ]
+	"origins": ["https://www.2k36.org"],
+	"originsRegex": [
+		"https://2k36-git-([A-z0-9]|-)*yuki-okushis-projects\\.vercel\\.app",
+		"http://localhost:[0-9]+"
+	]
 }

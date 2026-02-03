@@ -1,13 +1,14 @@
 ---
 published: 2021-07-02
-title: 'Contribution report for Jun. 2021'
-tags: ['report']
-description: 'A contribution report for Jun. 2021, by @JohnTitor.'
-category: 'report'
-image: ''
+title: "Contribution report for Jun. 2021"
+tags: ["report"]
+description: "A contribution report for Jun. 2021, by @JohnTitor."
+category: "report"
+image: ""
 draft: false
-lang: 'en'
+lang: "en"
 ---
+
 > [!WARNING]
 > This article is translated by AI and may contain a serious mistake.
 

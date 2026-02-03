@@ -26,11 +26,7 @@ export function GithubCardComponent(properties, children) {
 	const cardUuid = `GC${Math.random().toString(36).slice(-6)}`; // Collisions are not important
 
 	const nAvatar = h(`div#${cardUuid}-avatar`, { class: "gc-avatar" });
-	const nLanguage = h(
-		`span#${cardUuid}-language`,
-		{ class: "gc-language" },
-		"Waiting...",
-	);
+	const nLanguage = h(`span#${cardUuid}-language`, { class: "gc-language" }, "Waiting...");
 
 	const nTitle = h("div", { class: "gc-titlebar" }, [
 		h("div", { class: "gc-titlebar-left" }, [
