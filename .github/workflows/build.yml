@@ -38,7 +38,7 @@ jobs:
 
       - name: Type Check
         run: pnpm type-check
-        
+
       - name: format and lint
         run: |
           pnpm fmt:check

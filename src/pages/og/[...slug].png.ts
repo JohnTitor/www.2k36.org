@@ -177,11 +177,14 @@ function drawTitle(ctx: SKRSContext2D, title: string): void {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = await getCollection("posts", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const posts: CollectionEntry<"posts">[] = await getCollection(
+		"posts",
+		(entry: CollectionEntry<"posts">) => {
+			return import.meta.env.PROD ? entry.data.draft !== true : true;
+		},
+	);
 
-	return posts.map((entry) => ({
+	return posts.map((entry: CollectionEntry<"posts">) => ({
 		params: { slug: entry.id },
 		props: { entry },
 	}));
@@ -192,10 +195,13 @@ export const GET: APIRoute = async ({ params, props }) => {
 	if (!entry) {
 		const slug = Array.isArray(params.slug) ? params.slug.join("/") : params.slug;
 		if (slug) {
-			const posts = await getCollection("posts", ({ data }) => {
-				return import.meta.env.PROD ? data.draft !== true : true;
-			});
-			entry = posts.find((post) => post.id === slug);
+			const posts: CollectionEntry<"posts">[] = await getCollection(
+				"posts",
+				(post: CollectionEntry<"posts">) => {
+					return import.meta.env.PROD ? post.data.draft !== true : true;
+				},
+			);
+			entry = posts.find((post: CollectionEntry<"posts">) => post.id === slug);
 		}
 	}
 	if (!entry) {

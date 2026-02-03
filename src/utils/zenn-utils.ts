@@ -1,3 +1,4 @@
+import type { ArchivePost } from "../types/archive";
 import type { ZennApiResponse, ZennArticle } from "../types/zenn";
 
 export async function getZennArticles(): Promise<ZennArticle[]> {
@@ -11,19 +12,7 @@ export async function getZennArticles(): Promise<ZennArticle[]> {
 }
 
 // Function to convert to ArchivePanel format (expandable as needed)
-export function zennToArchivePost(zenn: ZennArticle): {
-	id: string;
-	data: {
-		title: string;
-		tags: string[];
-		category: string;
-		published: Date;
-		zennPath: string;
-		emoji: string;
-		liked: number;
-		bookmarked: number;
-	};
-} {
+export function zennToArchivePost(zenn: ZennArticle): ArchivePost {
 	return {
 		id: `zenn-${zenn.id}`,
 		data: {
