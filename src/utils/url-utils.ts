@@ -44,7 +44,7 @@ export function getDir(path: string): string {
 	return path.substring(0, lastSlashIndex + 1);
 }
 
-export function getCurrentLocale(pathname: string): string {
+export function getCurrentLocale(pathname: string): "en" | "ja" {
 	// Check if the pathname starts with /en/
 	if (pathname.startsWith("/en/") || pathname === "/en") {
 		return "en";

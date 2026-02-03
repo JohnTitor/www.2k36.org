@@ -18,5 +18,5 @@ const allPosts: ArchivePost[] = [...sortedPosts, ...zennPosts].sort(
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)}>
-    <ArchivePanel sortedPosts={allPosts} client:only="svelte"></ArchivePanel>
+    <ArchivePanel sortedPosts={allPosts} client:load></ArchivePanel>
 </MainGridLayout>

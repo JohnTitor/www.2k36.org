@@ -1,28 +1,38 @@
 import { AUTO_MODE, DARK_MODE, DEFAULT_THEME, LIGHT_MODE } from "@constants/constants.ts";
-import { expressiveCodeConfig } from "@/config";
+import { expressiveCodeConfig, siteConfig } from "@/config";
 import type { LIGHT_DARK_MODE } from "@/types/config";
 
+const isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
+const isStoredTheme = (value: string | null): value is LIGHT_DARK_MODE =>
+	value === LIGHT_MODE || value === DARK_MODE || value === AUTO_MODE;
+
 export function getDefaultHue(): number {
-	const fallback = "250";
+	const fallback = String(siteConfig.themeColor.hue);
+	if (!isBrowser) {
+		return Number.parseInt(fallback, 10);
+	}
 	const configCarrier = document.getElementById("config-carrier");
 	return Number.parseInt(configCarrier?.dataset.hue || fallback, 10);
 }
 
 export function getHue(): number {
+	if (!isBrowser) {
+		return getDefaultHue();
+	}
 	const stored = localStorage.getItem("hue");
 	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
 }
 
 export function setHue(hue: number): void {
+	if (!isBrowser) return;
 	localStorage.setItem("hue", String(hue));
 	const r = document.querySelector(":root") as HTMLElement;
-	if (!r) {
-		return;
-	}
+	if (!r) return;
 	r.style.setProperty("--hue", String(hue));
 }
 
 export function applyThemeToDocument(theme: LIGHT_DARK_MODE): void {
+	if (!isBrowser) return;
 	switch (theme) {
 		case LIGHT_MODE:
 			document.documentElement.classList.remove("dark");
@@ -44,10 +54,13 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE): void {
 }
 
 export function setTheme(theme: LIGHT_DARK_MODE): void {
+	if (!isBrowser) return;
 	localStorage.setItem("theme", theme);
 	applyThemeToDocument(theme);
 }
 
 export function getStoredTheme(): LIGHT_DARK_MODE {
-	return (localStorage.getItem("theme") as LIGHT_DARK_MODE) || DEFAULT_THEME;
+	if (!isBrowser) return DEFAULT_THEME as LIGHT_DARK_MODE;
+	const stored = localStorage.getItem("theme");
+	return isStoredTheme(stored) ? stored : (DEFAULT_THEME as LIGHT_DARK_MODE);
 }

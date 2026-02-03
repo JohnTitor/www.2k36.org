@@ -124,12 +124,7 @@ const siteLang = lang.replace("_", "-");
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 		
 		<!-- Performance Optimizations -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-		<link rel="dns-prefetch" href="//fonts.gstatic.com">
-
-		<!-- Resource Hints -->
-		<link rel="prefetch" href="/pagefind/pagefind.js">
 
 		<!-- Google tag (gtag.js) -->
 		<script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-V4WEXSY81M"></script>
@@ -215,6 +210,7 @@ async function loadScrollbars() {
 function setClickOutsideToClose(panel: string, ignores: string[]) {
 	document.addEventListener("click", event => {
 		let panelDom = document.getElementById(panel);
+		if (!panelDom) return;
 		let tDom = event.target;
 		if (!(tDom instanceof Node)) return;		// Ensure the event target is an HTML Node
 		for (let ig of ignores) {
@@ -223,7 +219,7 @@ function setClickOutsideToClose(panel: string, ignores: string[]) {
 				return;
 			}
 		}
-		panelDom!.classList.add("float-panel-closed");
+		panelDom.classList.add("float-panel-closed");
 	});
 }
 
@@ -462,8 +458,10 @@ function cleanupPhotoSwipe(): void {
 	initializationPromise = null;
 }
 
-// Setup for page navigation
-function setupPageHandlers(): void {
+let swupHandlersBound = false;
+
+// Setup for initial page navigation
+function setupInitialPage(): void {
 	// Initial page setup
 	handleImageLoading();
 	
@@ -475,44 +473,47 @@ function setupPageHandlers(): void {
 			setTimeout(initializePhotoSwipe, 100);
 		});
 	}
+}
+
+// Setup Swup navigation handlers (bind once)
+function bindSwupHandlers(): void {
+	if (swupHandlersBound || !window.swup) return;
+	swupHandlersBound = true;
+
+	// Before content replacement - clean up
+	window.swup.hooks.on('content:replace', cleanupPhotoSwipe, { before: true });
 	
-	// Swup navigation handlers
-	if (window.swup) {
-		// Before content replacement - clean up
-		window.swup.hooks.on('content:replace', cleanupPhotoSwipe, { before: true });
+	// After page transition - reinitialize
+	window.swup.hooks.on('page:view', () => {
+		handleImageLoading();
 		
-		// After page transition - reinitialize
-		window.swup.hooks.on('page:view', () => {
+		// Multiple attempts to ensure initialization after DOM settling
+		setTimeout(initializePhotoSwipe, 50);
+		setTimeout(initializePhotoSwipe, 200);
+		setTimeout(initializePhotoSwipe, 500);
+	});
+	
+	// Additional hook for content replacement completion
+	window.swup.hooks.on('content:replace', () => {
+		setTimeout(() => {
 			handleImageLoading();
-			
-			// Multiple attempts to ensure initialization after DOM settling
-			setTimeout(initializePhotoSwipe, 50);
-			setTimeout(initializePhotoSwipe, 200);
-			setTimeout(initializePhotoSwipe, 500);
-		});
-		
-		// Additional hook for content replacement completion
-		window.swup.hooks.on('content:replace', () => {
-			setTimeout(() => {
-				handleImageLoading();
-				initializePhotoSwipe();
-			}, 100);
-		});
-	}
+			initializePhotoSwipe();
+		}, 100);
+	});
 }
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', setupPageHandlers);
+	document.addEventListener('DOMContentLoaded', setupInitialPage);
 } else {
-	setupPageHandlers();
+	setupInitialPage();
 }
 
 // Setup Swup handlers when Swup is available
 if (window.swup) {
-	setupPageHandlers();
+	bindSwupHandlers();
 } else {
-	document.addEventListener('swup:enable', setupPageHandlers);
+	document.addEventListener('swup:enable', bindSwupHandlers);
 }
 
 // Debug helper

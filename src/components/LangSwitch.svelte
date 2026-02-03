@@ -3,7 +3,8 @@ import Icon from "@iconify/svelte";
 import { getCurrentLocale, getLocalizedUrl } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
 
-let locale = $state("ja");
+let { initialLocale = "ja" }: { initialLocale?: "ja" | "en" } = $props();
+let locale = $state(initialLocale);
 
 onMount(() => {
 	const cur = getCurrentLocale(window.location.pathname);
