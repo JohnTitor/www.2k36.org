@@ -360,7 +360,7 @@ function initializePhotoSwipe(): void {
 	// Prevent multiple simultaneous initializations
 	if (initializationPromise) return;
 	
-	initializationPromise = new Promise(async (resolve) => {
+	initializationPromise = (async () => {
 		try {
 			// Clean up existing instance
 			if (lightbox) {
@@ -375,7 +375,6 @@ function initializePhotoSwipe(): void {
 		// Check if there are images on the page
 		const images = document.querySelectorAll(".custom-md img:not(.remark-link-card-plus__image), #post-cover img");
 		if (images.length === 0) {
-			resolve();
 			return;
 		}
 
@@ -384,7 +383,6 @@ function initializePhotoSwipe(): void {
 		
 		if (!PhotoSwipeLightbox || !pswpModule) {
 			console.warn('PhotoSwipe modules not available');
-			resolve();
 			return;
 		}
 
@@ -419,9 +417,8 @@ function initializePhotoSwipe(): void {
 		} catch (error) {
 			console.error('Error initializing PhotoSwipe:', error);
 		}
-		
+	})().finally(() => {
 		initializationPromise = null;
-		resolve();
 	});
 }
 

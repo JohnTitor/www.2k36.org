@@ -38,6 +38,11 @@ jobs:
 
       - name: Type Check
         run: pnpm type-check
+        
+      - name: format and lint
+        run: |
+          pnpm fmt:check
+          pnpm lint
 
   build:
     runs-on: ubuntu-latest

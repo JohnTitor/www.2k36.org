@@ -160,8 +160,10 @@ class TableOfContents extends HTMLElement {
         if (!this.sections.length) return;
 
         for (let i = 0; i < this.sections.length; i++) {
-            let offsetTop = this.sections[i].getBoundingClientRect().top;
-            let offsetBottom = this.sections[i].getBoundingClientRect().bottom;
+            const section = this.sections[i];
+            if (!section) continue;
+            let offsetTop = section.getBoundingClientRect().top;
+            let offsetBottom = section.getBoundingClientRect().bottom;
 
             if (this.isInRange(offsetTop, 0, window.innerHeight)
                 || this.isInRange(offsetBottom, 0, window.innerHeight)
@@ -227,8 +229,8 @@ class TableOfContents extends HTMLElement {
 
         if (this.tocEntries.length === 0) return;
 
-        this.sections = new Array(this.tocEntries.length);
-        this.headings = new Array(this.tocEntries.length);
+        this.sections = Array.from({ length: this.tocEntries.length });
+        this.headings = Array.from({ length: this.tocEntries.length });
         for (let i = 0; i < this.tocEntries.length; i++) {
             const id = decodeURIComponent(this.tocEntries[i].hash?.substring(1));
             const heading = document.getElementById(id);
@@ -239,20 +241,20 @@ class TableOfContents extends HTMLElement {
                 this.headingIdxMap.set(id, i);
             }
         }
-        this.active = new Array(this.tocEntries.length).fill(false);
+        this.active = Array.from({ length: this.tocEntries.length }, () => false);
 
-        this.sections.forEach((section) =>
-            this.observer.observe(section)
-        );
+        this.sections.forEach((section) => {
+            if (section) this.observer.observe(section);
+        });
 
         this.fallback();
         this.update();
     };
 
     disconnectedCallback() {
-        this.sections.forEach((section) =>
-            this.observer.unobserve(section)
-        );
+        this.sections.forEach((section) => {
+            if (section) this.observer.unobserve(section);
+        });
         this.observer.disconnect();
         this.tocEl?.removeEventListener("click", this.handleAnchorClick);
     };
