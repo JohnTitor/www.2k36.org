@@ -1,12 +1,12 @@
 ---
 published: 2024-01-01
-title: 'The state of @JohnTitor, 2023'
-tags: ['report']
-description: 'The state of @JohnTitor, 2023'
-category: 'report'
-image: ''
+title: "The state of @JohnTitor, 2023"
+tags: ["report"]
+description: "The state of @JohnTitor, 2023"
+category: "report"
+image: ""
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 LoLの配信観ながら寝落ちしてたら年が明けていました。振り返りと抱負、やっていきます。

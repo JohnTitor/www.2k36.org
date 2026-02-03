@@ -9,12 +9,12 @@ OSSにも注力しており、RustやGNOME、Node.jsといった組織で活動�
 
 ## 経歴
 
-期間 | 企業 | ポジション | ロール
---- | --- | --- | ---
-2025-05 / Current | MOSH | Platform Engineer | Member
-2022-05 / 2025-04 | Canary | Backend, Platform Engineer | Member, TL
-2021-05 / 2022-04 | Huawei | OSS Engineer | Contractor
-2019-04 / 2019-10 | Vega Corporation | R&D Engineer | Member
+| 期間              | 企業             | ポジション                 | ロール     |
+| ----------------- | ---------------- | -------------------------- | ---------- |
+| 2025-05 / Current | MOSH             | Platform Engineer          | Member     |
+| 2022-05 / 2025-04 | Canary           | Backend, Platform Engineer | Member, TL |
+| 2021-05 / 2022-04 | Huawei           | OSS Engineer               | Contractor |
+| 2019-04 / 2019-10 | Vega Corporation | R&D Engineer               | Member     |
 
 ## 登壇
 

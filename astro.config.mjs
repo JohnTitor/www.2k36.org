@@ -185,17 +185,17 @@ export default defineConfig({
 				output: {
 					manualChunks: {
 						// Split vendor libraries into separate chunks
-						'swup': ['@swup/astro'],
-						'photoswipe': ['photoswipe'],
-						'ui-libs': ['overlayscrollbars'],
-						'icons': ['@iconify/svelte', 'astro-icon'],
-					}
-				}
+						swup: ["@swup/astro"],
+						photoswipe: ["photoswipe"],
+						"ui-libs": ["overlayscrollbars"],
+						icons: ["@iconify/svelte", "astro-icon"],
+					},
+				},
 			},
 		},
 		ssr: {
 			// Prevent SSR issues with certain packages
-			noExternal: ['photoswipe', 'overlayscrollbars']
-		}
+			noExternal: ["photoswipe", "overlayscrollbars"],
+		},
 	},
 });

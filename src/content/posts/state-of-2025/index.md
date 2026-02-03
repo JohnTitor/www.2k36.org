@@ -1,12 +1,12 @@
 ---
 published: 2026-01-12
-title: 'The state of @JohnTitor, 2025'
-tags: ['report']
-description: 'The state of @JohnTitor, 2025'
-category: 'report'
-image: ''
+title: "The state of @JohnTitor, 2025"
+tags: ["report"]
+description: "The state of @JohnTitor, 2025"
+category: "report"
+image: ""
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 まだ新年の抱負がギリ許されそうということはギリ去年の振り返りも許されるということ。

@@ -1,12 +1,12 @@
 ---
 published: 2025-10-20
-title: '新PCに引っ越したときの備忘録 2025'
+title: "新PCに引っ越したときの備忘録 2025"
 tags: [diary, japanese]
-description: '新PCに引っ越したときの備忘録 2025'
-category: 'diary'
-image: './new-pc-builds-2025/pc.jpg'
+description: "新PCに引っ越したときの備忘録 2025"
+category: "diary"
+image: "./new-pc-builds-2025/pc.jpg"
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 一念発起して新PCに引っ越した。
@@ -44,7 +44,7 @@ build.jobs = 28
 `./x clean` 後に `./x test tests/ui` でUI testを流したときの時間:
 
 ```shell
-❯ hyperfine -r 1 './x t tests/ui'                                                                                                                         
+❯ hyperfine -r 1 './x t tests/ui'
 Benchmark 1: ./x t tests/ui
   Time (abs ≡):        234.682 s               [User: 2560.617 s, System: 735.184 s]
 ```
@@ -58,7 +58,7 @@ Benchmark 1: ./x t tests/ui
 雑に変更入れてUI test流すと:
 
 ```shell
-❯ hyperfine -r 1 './x t tests/ui'                                                                                                                         
+❯ hyperfine -r 1 './x t tests/ui'
 Benchmark 1: ./x t tests/ui
   Time (abs ≡):        135.148 s               [User: 1277.302 s, System: 634.298 s]
 ```

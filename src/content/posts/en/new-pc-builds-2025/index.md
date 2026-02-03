@@ -1,12 +1,12 @@
 ---
 published: 2025-10-20
-title: 'Memo for Moving to a New PC 2025'
+title: "Memo for Moving to a New PC 2025"
 tags: [diary, english]
-description: 'Memo for Moving to a New PC 2025'
-category: 'diary'
-image: './new-pc-builds-2025/pc.jpg'
+description: "Memo for Moving to a New PC 2025"
+category: "diary"
+image: "./new-pc-builds-2025/pc.jpg"
 draft: false
-lang: 'en'
+lang: "en"
 ---
 
 > [!WARNING]

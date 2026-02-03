@@ -1,12 +1,12 @@
 ---
 published: 2025-01-18
-title: 'The state of @JohnTitor, 2024'
-tags: ['report']
-description: 'The state of @JohnTitor, 2024'
-category: 'report'
-image: ''
+title: "The state of @JohnTitor, 2024"
+tags: ["report"]
+description: "The state of @JohnTitor, 2024"
+category: "report"
+image: ""
 draft: false
-lang: 'ja'
+lang: "ja"
 ---
 
 「恥を忍んで思い出を捨てて、そうやって忘れた振りをして同じ過ちを重ねていくのよ。きっと、これからも」
@@ -78,7 +78,7 @@ engineeringだけではなくbrandingも必要だからだ。
 ### 旅行
 
 > 2024年は海外にも足を向けられたらと思います。
-> 
+>
 > Yuki Okushi 2024, ‘The state of @JohnTitor, 2023’, _2k36_, weblog post, 1 Jan, accessed 18 Jan 2025, <https://www.2k36.org/posts/the-state-of-johntitor-2023>.
 
 夏にハワイを訪れたので無事達成できた。日差しの強さはあったが比較的過ごしやすく、ビーチやマイ・タイなど"らしい"体験も色色とできた。

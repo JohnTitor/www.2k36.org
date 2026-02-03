@@ -1,12 +1,12 @@
 ---
 published: 2025-10-03
-title: 'Migration to Void Linux Memo 2025'
+title: "Migration to Void Linux Memo 2025"
 tags: [diary, english]
-description: 'A memo of my migration to Void Linux in 2025'
-category: 'diary'
-image: ''
+description: "A memo of my migration to Void Linux in 2025"
+category: "diary"
+image: ""
 draft: false
-lang: 'en'
+lang: "en"
 ---
 
 > [!WARNING]
@@ -87,6 +87,7 @@ After rebooting, you should be able to use KDE + Wayland.
 ```bash
 sudo reboot
 ```
+
 The Nvidia setup worked without special configuration on X11, but it's 2025—using X11 instead of Wayland felt wrong, so I went through a lot of trial and error.
 
 ## Audio Issues
@@ -177,4 +178,3 @@ Now just use it however you like.
 This time I went with Void Linux based on DistroWatch's ranking, but if I get bored, I'd like to try Garuda or Endeavour.
 
 I haven't fully set up my development environment yet, so I'll write more if anything comes up.
-

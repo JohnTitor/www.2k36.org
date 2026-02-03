@@ -22,9 +22,7 @@ async function getSortedPostsInternal(locale?: string) {
 	});
 }
 
-export async function getSortedPosts(
-	locale?: string,
-): Promise<CollectionEntry<"posts">[]> {
+export async function getSortedPosts(locale?: string): Promise<CollectionEntry<"posts">[]> {
 	const sorted = await getSortedPostsInternal(locale);
 
 	for (let i = 1; i < sorted.length; i++) {

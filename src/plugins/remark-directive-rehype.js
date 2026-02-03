@@ -9,8 +9,11 @@ export function parseDirectiveNode() {
 				node.type === "leafDirective" ||
 				node.type === "textDirective"
 			) {
-				// biome-ignore lint/suspicious/noAssignInExpressions: FIXME: need to re-visit
-				const data = node.data || (node.data = {});
+				let data = node.data;
+				if (!data) {
+					data = {};
+					node.data = data;
+				}
 				node.attributes = node.attributes || {};
 				if (
 					node.children.length > 0 &&
