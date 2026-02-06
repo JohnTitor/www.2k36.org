@@ -60,7 +60,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const giscusConfig: GiscusConfig = {
-	repo: "JohnTitor/authority",
+	repo: "JohnTitor/www.2k36.org",
 	repoId: "R_kgDOK1-0Eg",
 	category: "Announcements",
 	categoryId: "DIC_kwDOK1-0Es4CrgZf",
