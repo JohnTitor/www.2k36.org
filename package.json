@@ -78,7 +78,7 @@
 		"@types/node": "^24.1.0",
 		"@types/sanitize-html": "^2.16.0",
 		"node-fetch": "^3.3.0",
-		"oxfmt": "^0.34.0",
+		"oxfmt": "^0.35.0",
 		"oxlint": "^1.41.0"
 	},
 	"packageManager": "pnpm@10.30.1"
