@@ -45,9 +45,26 @@ if (isLocal) {
 }
 
 const imageClass = "w-full h-full object-cover";
-const imageStyle = `object-position: ${position}`;
+const imageStyle = [
+	"display: block",
+	"width: 100%",
+	"height: 100%",
+	"object-fit: cover",
+	`object-position: ${position}`,
+].join("; ");
+const wrapperStyle = [
+	"display: block",
+	"width: 100%",
+	"max-width: 100%",
+	img?.width && img?.height ? `aspect-ratio: ${img.width} / ${img.height}` : "",
+].filter(Boolean).join("; ");
 ---
-<div id={id} class:list={[className, 'overflow-hidden relative']}>
+<div
+	id={id}
+	data-image-wrapper
+	class:list={[className, "overflow-hidden relative"]}
+	style={wrapperStyle}
+>
     <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div>
     {isLocal && img && <Image src={img} alt={alt || ""} class={imageClass} style={imageStyle}/>}
     {!isLocal && <img src={isPublic ? url(src) : src} alt={alt || ""} class={imageClass} style={imageStyle}/>}

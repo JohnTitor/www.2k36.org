@@ -30,8 +30,8 @@ html.is-animating .transition-swup-fade {
 /* Always visible on mobile devices */
 @media (max-width: 768px) {
 	.onload-animation {
-		animation: none!;
-		opacity: 1!;
+		animation: none !important;
+		opacity: 1 !important;
 	}
 }
 

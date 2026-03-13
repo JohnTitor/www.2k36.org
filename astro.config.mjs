@@ -186,8 +186,6 @@ export default defineConfig({
 					manualChunks: {
 						// Split vendor libraries into separate chunks
 						swup: ["@swup/astro"],
-						photoswipe: ["photoswipe"],
-						"ui-libs": ["overlayscrollbars"],
 						icons: ["@iconify/svelte", "astro-icon"],
 					},
 				},
