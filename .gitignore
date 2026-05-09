@@ -9,7 +9,6 @@ node_modules/
 
 # logs
 npm-debug.log*
-pnpm-debug.log*
 
 # environment variables
 .env
