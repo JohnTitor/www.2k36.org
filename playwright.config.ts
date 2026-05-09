@@ -44,7 +44,7 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: "pnpm dev",
+		command: "aube run dev",
 		url: "http://localhost:4321",
 		reuseExistingServer: true,
 		timeout: 120000, // 2 minutes timeout
