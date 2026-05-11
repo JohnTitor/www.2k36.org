@@ -10,18 +10,18 @@
 
 ## Build, Test, and Development Commands
 
-Use `aube` (the repo pins it via `packageManager`).
+Use `pnpm` (the repo enforces it via `preinstall`).
 
-- `aube dev`: start the Astro dev server at `http://localhost:4321`.
-- `aube build`: build the site and generate Pagefind search for `dist/`.
-- `aube preview`: preview the production build locally.
-- `aube check`: run Astro’s project checks.
-- `aube type-check`: TypeScript type checks.
-- `aube lint` / `aube lint:fix`: run Oxlint.
-- `aube fmt` / `aube fmt:check`: run Oxfmt.
-- `aube test`: run Playwright tests.
-- `aube test:update`: update Playwright snapshots.
-- `aube new-post`: scaffold a new post.
+- `pnpm dev`: start the Astro dev server at `http://localhost:4321`.
+- `pnpm build`: build the site and generate Pagefind search for `dist/`.
+- `pnpm preview`: preview the production build locally.
+- `pnpm check`: run Astro’s project checks.
+- `pnpm type-check`: TypeScript type checks.
+- `pnpm lint` / `pnpm lint:fix`: run Oxlint.
+- `pnpm fmt` / `pnpm fmt:check`: run Oxfmt.
+- `pnpm test`: run Playwright tests.
+- `pnpm test:update`: update Playwright snapshots.
+- `pnpm new-post`: scaffold a new post.
 
 ## Coding Style & Naming Conventions
 
@@ -34,7 +34,7 @@ Use `aube` (the repo pins it via `packageManager`).
 
 - Tests are Playwright-based (`tests/*.spec.ts`).
 - Visual snapshots live in `tests/*.spec.ts-snapshots/`.
-- `aube test` spins up the dev server automatically; run `aube test:update` when intentional UI changes occur.
+- `pnpm test` spins up the dev server automatically; run `pnpm test:update` when intentional UI changes occur.
 
 ## Commit & Pull Request Guidelines
 
@@ -45,4 +45,4 @@ Use `aube` (the repo pins it via `packageManager`).
 ## Content & Data Updates
 
 - Content updates belong in `src/content/` and should match existing frontmatter patterns.
-- Data refresh scripts live in `scripts/` (e.g., `aube update-zenn`, `aube fetch-sponsors`).
+- Data refresh scripts live in `scripts/` (e.g., `pnpm update-zenn`, `pnpm fetch-sponsors`).
