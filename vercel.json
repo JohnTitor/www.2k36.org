@@ -1,5 +1,1 @@
-{
-	"installCommand": "npm install -g --ignore-scripts=false @endevco/aube@1.9.1 && aube ci",
-	"buildCommand": "aube build",
-	"outputDirectory": "dist"
-}
+{}

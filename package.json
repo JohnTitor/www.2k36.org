@@ -20,7 +20,8 @@
 		"test": "playwright test",
 		"test:update": "playwright test --update-snapshots",
 		"test:debug": "playwright test --debug",
-		"test:ui": "playwright test --ui"
+		"test:ui": "playwright test --ui",
+		"preinstall": "npx only-allow pnpm"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.7",
@@ -79,5 +80,6 @@
 		"node-fetch": "^3.3.0",
 		"oxfmt": "^0.48.0",
 		"oxlint": "^1.41.0"
-	}
+	},
+	"packageManager": "pnpm@10.33.4"
 }
