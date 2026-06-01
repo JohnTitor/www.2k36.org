@@ -81,5 +81,5 @@
 		"oxfmt": "^0.52.0",
 		"oxlint": "^1.41.0"
 	},
-	"packageManager": "pnpm@11.4.0"
+	"packageManager": "pnpm@11.5.0"
 }
