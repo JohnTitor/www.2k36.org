@@ -36,6 +36,15 @@
 		}
 	},
 	{
+		"username": "github",
+		"name": "GitHub",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/9919?v=4",
+		"tier": {
+			"name": "$40 one time",
+			"monthlyPriceInDollars": 40
+		}
+	},
+	{
 		"username": "upsuper",
 		"name": "Xidorn Quan",
 		"profilePicUrl": "https://avatars.githubusercontent.com/u/333750?u=651316a0bc85f3978374a78ad6606030ce20be1f&v=4",
@@ -72,6 +81,15 @@
 		}
 	},
 	{
+		"username": "maflcko",
+		"name": "maflcko",
+		"profilePicUrl": "https://avatars.githubusercontent.com/u/6399679?u=620d56607316445b8677d81a1b8fac3ad3cbcebc&v=4",
+		"tier": {
+			"name": "$4 a month",
+			"monthlyPriceInDollars": 4
+		}
+	},
+	{
 		"username": "elpiel",
 		"name": "Lachezar Lechev",
 		"profilePicUrl": "https://avatars.githubusercontent.com/u/8925621?u=800b7866cc7cbf27c6afa8831aa49f8cd249ae86&v=4",
@@ -87,15 +105,6 @@
 		"tier": {
 			"name": "$5 a month",
 			"monthlyPriceInDollars": 5
-		}
-	},
-	{
-		"username": "0xquantech",
-		"name": "Q",
-		"profilePicUrl": "https://avatars.githubusercontent.com/u/92380384?u=60969d7e2ad17558c26b1d3e0dd95bda3fe7b086&v=4",
-		"tier": {
-			"name": "$1 a month",
-			"monthlyPriceInDollars": 1
 		}
 	}
 ]

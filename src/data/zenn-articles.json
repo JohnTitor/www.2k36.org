@@ -1,12 +1,47 @@
 {
 	"articles": [
 		{
+			"id": 590319,
+			"post_type": "Article",
+			"slug": "d047f5c709e3ab",
+			"comments_count": 0,
+			"liked_count": 9,
+			"bookmarked_count": 0,
+			"body_letters_count": 4872,
+			"article_type": "tech",
+			"emoji": "🌈",
+			"is_suspending_private": false,
+			"published_at": "2026-06-02T12:10:35.763+09:00",
+			"body_updated_at": "2026-06-02T09:01:53.249+09:00",
+			"source_repo_updated_at": "2026-06-02T12:10:35.757+09:00",
+			"pinned": false,
+			"path": "/moshjp/articles/d047f5c709e3ab",
+			"principal_type": "Publication",
+			"title": "MOSHのActions workflowsにzizmorを導入しました",
+			"user": {
+				"id": 5681,
+				"username": "fraternite",
+				"name": "Yuki Okushi",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
+			},
+			"publication": {
+				"id": 899,
+				"name": "moshjp",
+				"display_name": "MOSH",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--n31WUZ3V--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg?_a=BACMTiAE",
+				"avatar_url": "https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg",
+				"pro": false,
+				"avatar_registered": true
+			},
+			"publication_article_override": null
+		},
+		{
 			"id": 492626,
 			"post_type": "Article",
 			"slug": "89210853cd4dc9",
 			"comments_count": 0,
-			"liked_count": 40,
-			"bookmarked_count": 18,
+			"liked_count": 41,
+			"bookmarked_count": 19,
 			"body_letters_count": 7050,
 			"article_type": "idea",
 			"emoji": "🍂",
@@ -22,14 +57,14 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": {
 				"id": 899,
 				"name": "moshjp",
 				"display_name": "MOSH",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--lFBLPm9X--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://storage.googleapis.com/zenn-user-upload/avatar/4dc4b34411.jpeg?_a=BACAGSGT",
-				"avatar_url": "https://storage.googleapis.com/zenn-user-upload/avatar/4dc4b34411.jpeg",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--n31WUZ3V--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg?_a=BACMTiAE",
+				"avatar_url": "https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg",
 				"pro": false,
 				"avatar_registered": true
 			},
@@ -40,7 +75,7 @@
 			"post_type": "Article",
 			"slug": "119b0c7a1dd585",
 			"comments_count": 0,
-			"liked_count": 7,
+			"liked_count": 8,
 			"bookmarked_count": 0,
 			"body_letters_count": 4790,
 			"article_type": "tech",
@@ -57,14 +92,14 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": {
 				"id": 899,
 				"name": "moshjp",
 				"display_name": "MOSH",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--lFBLPm9X--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://storage.googleapis.com/zenn-user-upload/avatar/4dc4b34411.jpeg?_a=BACAGSGT",
-				"avatar_url": "https://storage.googleapis.com/zenn-user-upload/avatar/4dc4b34411.jpeg",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--n31WUZ3V--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg?_a=BACMTiAE",
+				"avatar_url": "https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg",
 				"pro": false,
 				"avatar_registered": true
 			},
@@ -75,7 +110,7 @@
 			"post_type": "Article",
 			"slug": "4f91ad6f40a7bf",
 			"comments_count": 0,
-			"liked_count": 12,
+			"liked_count": 17,
 			"bookmarked_count": 2,
 			"body_letters_count": 4505,
 			"article_type": "tech",
@@ -92,14 +127,14 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": {
 				"id": 899,
 				"name": "moshjp",
 				"display_name": "MOSH",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--lFBLPm9X--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://storage.googleapis.com/zenn-user-upload/avatar/4dc4b34411.jpeg?_a=BACAGSGT",
-				"avatar_url": "https://storage.googleapis.com/zenn-user-upload/avatar/4dc4b34411.jpeg",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--n31WUZ3V--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg?_a=BACMTiAE",
+				"avatar_url": "https://static.zenn.studio/user-upload/avatar/4dc4b34411.jpeg",
 				"pro": false,
 				"avatar_registered": true
 			},
@@ -127,14 +162,14 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": {
 				"id": 634,
 				"name": "canary_techblog",
 				"display_name": "Canary Tech Blog",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--ObxTzLwn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://storage.googleapis.com/zenn-user-upload/avatar/e7750fcc35.jpeg?_a=BACAGSGT",
-				"avatar_url": "https://storage.googleapis.com/zenn-user-upload/avatar/e7750fcc35.jpeg",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--6Tz7RtST--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://static.zenn.studio/user-upload/avatar/e7750fcc35.jpeg?_a=BACMTiAE",
+				"avatar_url": "https://static.zenn.studio/user-upload/avatar/e7750fcc35.jpeg",
 				"pro": false,
 				"avatar_registered": true
 			},
@@ -162,14 +197,14 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": {
 				"id": 634,
 				"name": "canary_techblog",
 				"display_name": "Canary Tech Blog",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--ObxTzLwn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://storage.googleapis.com/zenn-user-upload/avatar/e7750fcc35.jpeg?_a=BACAGSGT",
-				"avatar_url": "https://storage.googleapis.com/zenn-user-upload/avatar/e7750fcc35.jpeg",
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--6Tz7RtST--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_80/https://static.zenn.studio/user-upload/avatar/e7750fcc35.jpeg?_a=BACMTiAE",
+				"avatar_url": "https://static.zenn.studio/user-upload/avatar/e7750fcc35.jpeg",
 				"pro": false,
 				"avatar_registered": true
 			},
@@ -197,7 +232,7 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": null,
 			"publication_article_override": null
@@ -207,8 +242,8 @@
 			"post_type": "Article",
 			"slug": "bc9c99658aae1c",
 			"comments_count": 0,
-			"liked_count": 14,
-			"bookmarked_count": 1,
+			"liked_count": 15,
+			"bookmarked_count": 2,
 			"body_letters_count": 4988,
 			"article_type": "tech",
 			"emoji": "☔",
@@ -224,7 +259,7 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": null,
 			"publication_article_override": null
@@ -251,7 +286,7 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": null,
 			"publication_article_override": null
@@ -278,7 +313,7 @@
 				"id": 5681,
 				"username": "fraternite",
 				"name": "Yuki Okushi",
-				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--zG0xAL9D--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://storage.googleapis.com/zenn-user-upload/avatar/e17f25c82f.jpeg?_a=BACAGSGT"
+				"avatar_small_url": "https://res.cloudinary.com/zenn/image/fetch/s--iU_z3bJw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_70/https://static.zenn.studio/user-upload/avatar/e17f25c82f.jpeg?_a=BACMTiAE"
 			},
 			"publication": null,
 			"publication_article_override": null
