@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from "astro:content";
-import { fileURLToPath } from "node:url";
+import path from "node:path";
 import { createCanvas, GlobalFonts, type SKRSContext2D } from "@napi-rs/canvas";
 import type { APIRoute, GetStaticPaths } from "astro";
 import { siteConfig } from "@/config";
@@ -16,8 +16,10 @@ const TITLE_MIN_SIZE = 44;
 const TITLE_LINE_HEIGHT = 1.25;
 const FONT_FAMILY = "IPAGothic";
 
-const fontPath = fileURLToPath(new URL("../../assets/og/fonts/ipag.ttf", import.meta.url));
-GlobalFonts.registerFromPath(fontPath, FONT_FAMILY);
+const fontPath = path.resolve("src/assets/og/fonts/ipag.ttf");
+if (!GlobalFonts.registerFromPath(fontPath, FONT_FAMILY)) {
+	throw new Error(`Failed to register OG font: ${fontPath}`);
+}
 
 function normalizeTitle(title: string): string {
 	return title.replace(/\s+/g, " ").trim();
