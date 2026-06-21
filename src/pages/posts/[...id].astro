@@ -25,6 +25,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 const ogImageUrl = entry.data.ogImage || `/og/${entry.id}.png`;
+const postUrl = new URL(getPostUrlById(entry.id), Astro.site).href;
+const shareText = encodeURIComponent(`${entry.data.title}｜2k36 ${postUrl}`);
 
 const { Content, headings } = await render(entry);
 
@@ -110,7 +112,7 @@ const jsonLd = {
             </div>
             <div class="flex gap-2 mt-5 mb-5 justify-end onload-animation">
                 <div class="relative">
-                    <a href=`https://bsky.app/intent/compose?text=${entry.data.title}｜2k36 ${Astro.site}${entry.id}` target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90 group">
+                    <a href={`https://bsky.app/intent/compose?text=${shareText}`} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90 group">
                         <Icon name="line-md:bluesky" class="text-[1.5rem]"></Icon>
                         <span
                             class="whitespace-nowrap rounded bg-gray-700 px-2 py-1 text-white absolute -top-10 left-1/2 -translate-x-1/2 before:content-[''] before:absolute before:-translate-x-1/2 before:left-1/2 before:top-full before:border-4 before:border-transparent before:border-t-gray-700 opacity-0 group-hover:opacity-100 transition pointer-events-none">
@@ -119,7 +121,7 @@ const jsonLd = {
                     </a>
                 </div>
                 <div class="relative">
-                    <a href=`https://x.com/intent/post?text=${entry.data.title}｜2k36 ${Astro.site}${entry.id}` target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90 group">
+                    <a href={`https://x.com/intent/post?text=${shareText}`} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90 group">
                         <Icon name="line-md:twitter-x" class="text-[1.5rem]"></Icon>
                         <span
                             class="whitespace-nowrap rounded bg-gray-700 px-2 py-1 text-white absolute -top-10 left-1/2 -translate-x-1/2 before:content-[''] before:absolute before:-translate-x-1/2 before:left-1/2 before:top-full before:border-4 before:border-transparent before:border-t-gray-700 opacity-0 group-hover:opacity-100 transition pointer-events-none">
