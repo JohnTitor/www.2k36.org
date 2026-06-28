@@ -1,4 +1,5 @@
 import partytown from "@astrojs/partytown";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
@@ -110,62 +111,64 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [
-			remarkReadingTime,
-			remarkExcerpt,
-			remarkGithubAdmonitionsToDirectives,
-			remarkDirective,
-			[
-				remarkLinkCard,
-				{
-					cache: true,
-					shortenUrl: true,
-					thumbnailPosition: "right",
-					noFavicon: true,
-				},
-			],
-			remarkSectionize,
-			parseDirectiveNode,
-		],
-		rehypePlugins: [
-			rehypeSlug,
-			[
-				rehypeComponents,
-				{
-					components: {
-						github: GithubCardComponent,
-						note: (x, y) => AdmonitionComponent(x, y, "note"),
-						tip: (x, y) => AdmonitionComponent(x, y, "tip"),
-						important: (x, y) => AdmonitionComponent(x, y, "important"),
-						caution: (x, y) => AdmonitionComponent(x, y, "caution"),
-						warning: (x, y) => AdmonitionComponent(x, y, "warning"),
+		processor: unified({
+			remarkPlugins: [
+				remarkReadingTime,
+				remarkExcerpt,
+				remarkGithubAdmonitionsToDirectives,
+				remarkDirective,
+				[
+					remarkLinkCard,
+					{
+						cache: true,
+						shortenUrl: true,
+						thumbnailPosition: "right",
+						noFavicon: true,
 					},
-				},
+				],
+				remarkSectionize,
+				parseDirectiveNode,
 			],
-			[
-				rehypeAutolinkHeadings,
-				{
-					behavior: "append",
-					properties: {
-						className: ["anchor"],
-					},
-					content: {
-						type: "element",
-						tagName: "span",
-						properties: {
-							className: ["anchor-icon"],
-							"data-pagefind-ignore": true,
+			rehypePlugins: [
+				rehypeSlug,
+				[
+					rehypeComponents,
+					{
+						components: {
+							github: GithubCardComponent,
+							note: (x, y) => AdmonitionComponent(x, y, "note"),
+							tip: (x, y) => AdmonitionComponent(x, y, "tip"),
+							important: (x, y) => AdmonitionComponent(x, y, "important"),
+							caution: (x, y) => AdmonitionComponent(x, y, "caution"),
+							warning: (x, y) => AdmonitionComponent(x, y, "warning"),
 						},
-						children: [
-							{
-								type: "text",
-								value: "#",
-							},
-						],
 					},
-				},
+				],
+				[
+					rehypeAutolinkHeadings,
+					{
+						behavior: "append",
+						properties: {
+							className: ["anchor"],
+						},
+						content: {
+							type: "element",
+							tagName: "span",
+							properties: {
+								className: ["anchor-icon"],
+								"data-pagefind-ignore": true,
+							},
+							children: [
+								{
+									type: "text",
+									value: "#",
+								},
+							],
+						},
+					},
+				],
 			],
-		],
+		}),
 	},
 	vite: {
 		plugins: [tailwindcss()],
@@ -183,10 +186,16 @@ export default defineConfig({
 					warn(warning);
 				},
 				output: {
-					manualChunks: {
-						// Split vendor libraries into separate chunks
-						swup: ["@swup/astro"],
-						icons: ["@iconify/svelte", "astro-icon"],
+					manualChunks(id) {
+						if (id.includes("node_modules/@swup/astro")) {
+							return "swup";
+						}
+						if (
+							id.includes("node_modules/@iconify/svelte") ||
+							id.includes("node_modules/astro-icon")
+						) {
+							return "icons";
+						}
 					},
 				},
 			},
