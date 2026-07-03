@@ -29,7 +29,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 export default defineConfig({
 	site: "https://www.2k36.org",
 	base: "/",
-	trailingSlash: "always",
+	trailingSlash: "ignore",
 	i18n: {
 		defaultLocale: "ja",
 		locales: ["ja", "en"],
