@@ -216,7 +216,7 @@ importers:
         version: 2.1.0(supports-color@7.2.0)
       remark-link-card-plus:
         specifier: ^0.8.0
-        version: 0.8.0(supports-color@7.2.0)
+        version: 0.8.1(supports-color@7.2.0)
       remark-sectionize:
         specifier: ^2.1.0
         version: 2.1.0
@@ -3168,8 +3168,8 @@ packages:
     resolution: {integrity: sha512-UxKlfCRuCBxSXU4C6t9scbDyWZ4VlaFFdojKtzJuSkuOBQ5CNFum+zZXFwHjo+CxBC1t6zlYPgHIgFjL8ggoEQ==}
     engines: {node: '>=0.10.0'}
 
-  file-type@22.0.1:
-    resolution: {integrity: sha512-ww5Mhre0EE+jmBvOXTmXAbEMuZE7uX4a3+oRCQFNj8w++g3ev913N6tXQz0XTXbueQ5TWQfm6BdaViEHHn8bhA==}
+  file-type@22.0.2:
+    resolution: {integrity: sha512-0H8TsCUGBLx+V5adH3EY52hTAcyLKbV1D4gq5cIOJ6DnQAHeV9Z2Hhuc5CoBX4YmvB2oL+JIC84z0qO7JsCoNw==}
     engines: {node: '>=22'}
 
   filelist@1.0.4:
@@ -4707,8 +4707,8 @@ packages:
     resolution: {integrity: sha512-bI3E4Oj1pKY3ym2IQrrVCdORgEu0+mSrWgpCYFNy8QvytfnLs/nAacVPjkWU/JzDMUiQio2k4nTFP7bsIr9TSA==}
     engines: {pnpm: '>=9.0.0'}
 
-  remark-link-card-plus@0.8.0:
-    resolution: {integrity: sha512-ugr3guxBxgzx6mtt0cvRf0fmnXlRWfd0wKg4mLvwCq8klf2f5+9MGJRP4SpkRU+hAsIqtTkXm3lvwcJf5Vnvkg==}
+  remark-link-card-plus@0.8.1:
+    resolution: {integrity: sha512-Lm1LeLukYGGtBjfWLZkhLcXy8rnTKFxfn2OKuKsW6v+kPziT5daVvCLTpnJ8sNSEGAlSUy9ZBEM6e6+UMm5HxA==}
     engines: {node: '>=22.13.0'}
 
   remark-mdx@3.1.1:
@@ -8717,7 +8717,7 @@ snapshots:
       escape-string-regexp: 1.0.5
       object-assign: 4.1.1
 
-  file-type@22.0.1(supports-color@7.2.0):
+  file-type@22.0.2(supports-color@7.2.0):
     dependencies:
       '@tokenizer/inflate': 0.4.1(supports-color@7.2.0)
       strtok3: 10.3.5
@@ -10727,10 +10727,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remark-link-card-plus@0.8.0(supports-color@7.2.0):
+  remark-link-card-plus@0.8.1(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      file-type: 22.0.1(supports-color@7.2.0)
+      file-type: 22.0.2(supports-color@7.2.0)
       open-graph-scraper: 6.12.0
       sanitize-html: 2.17.7
       unified: 11.0.5
