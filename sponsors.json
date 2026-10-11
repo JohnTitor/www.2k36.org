@@ -36,15 +36,6 @@
 		}
 	},
 	{
-		"username": "github",
-		"name": "GitHub",
-		"profilePicUrl": "https://avatars.githubusercontent.com/u/9919?v=4",
-		"tier": {
-			"name": "$40 one time",
-			"monthlyPriceInDollars": 40
-		}
-	},
-	{
 		"username": "upsuper",
 		"name": "Xidorn Quan",
 		"profilePicUrl": "https://avatars.githubusercontent.com/u/333750?u=651316a0bc85f3978374a78ad6606030ce20be1f&v=4",
