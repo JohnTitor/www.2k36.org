@@ -41,6 +41,11 @@ export const profileConfig: ProfileConfig = {
 			url: "https://bsky.app/profile/2k36.org",
 		},
 		{
+			name: "X",
+			icon: "line-md:twitter-x",
+			url: "https://x.com/timeE4ter",
+		},
+		{
 			name: "LinkedIn",
 			icon: "line-md:linkedin",
 			url: "https://www.linkedin.com/in/jtitor/",
