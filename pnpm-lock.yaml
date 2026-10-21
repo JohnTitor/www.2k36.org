@@ -207,7 +207,7 @@ importers:
         version: 1.2.95
       '@iconify/svelte':
         specifier: ^5.0.0
-        version: 5.2.2(svelte@5.57.2)
+        version: 5.2.3(svelte@5.57.2)
       '@napi-rs/canvas':
         specifier: ^1.0.0
         version: 1.0.11
@@ -1329,8 +1329,8 @@ packages:
   '@iconify-json/material-symbols@1.2.95':
     resolution: {integrity: sha512-n34GNbwe8We3LPXK2N8JuQewEQkITJiRsmX/0UYJsOyKzviVl22mNfLUiGGtXLKDPqxZa17q1Hg57zdA3BYa0w==}
 
-  '@iconify/svelte@5.2.2':
-    resolution: {integrity: sha512-XMXxD3nzH7yB68C3K4sNwzrJ1TBscODR0ZqCeNf0KGuEMCTSuCo0jHNDZ0o0iRXTylO41NSz/DWam/4atLG1yw==}
+  '@iconify/svelte@5.2.3':
+    resolution: {integrity: sha512-RV08FAHSsUW3/4WJsfoMYGbNt413Eh+4thU864pmX2QGFaem2P7zTcANYwkSOnApGlpYhMXJM813tN1tfk68ug==}
     peerDependencies:
       svelte: '>5.0.0'
 
@@ -7065,7 +7065,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/svelte@5.2.2(svelte@5.57.2)':
+  '@iconify/svelte@5.2.3(svelte@5.57.2)':
     dependencies:
       '@iconify/types': 2.0.0
       svelte: 5.57.2
