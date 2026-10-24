@@ -102,7 +102,7 @@ sudo xbps-install pipewire wireplumber
 
 The following documentation has detailed information on the subsequent setup.
 
-https://docs.voidlinux.org/config/media/pipewire.html
+[Void Linux Handbook: PipeWire](https://docs.voidlinux.org/config/media/pipewire.html)
 
 Set up the session manager and configuration for PipeWire-incompatible applications:
 

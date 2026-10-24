@@ -99,7 +99,7 @@ sudo xbps-install pipewire wireplumber
 
 以降の設定は以下のドキュメントに詳しい。
 
-https://docs.voidlinux.org/config/media/pipewire.html
+[Void Linux Handbook: PipeWire](https://docs.voidlinux.org/config/media/pipewire.html)
 
 session managerとPipeWire非対応アプリケーションのための設定を入れる：
 

@@ -1,0 +1,50 @@
+---
+import "photoswipe/style.css";
+import "../../styles/photoswipe.css";
+---
+
+<script>
+	import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+	const gallery = document.getElementById("post-container");
+	if (gallery?.querySelector("img:not(.remark-link-card-plus__image)")) {
+		const lightbox = new PhotoSwipeLightbox({
+			gallery,
+			children: "img:not(.remark-link-card-plus__image)",
+			pswpModule: () => import("photoswipe"),
+			padding: { top: 20, bottom: 20, left: 20, right: 20 },
+			wheelToZoom: true,
+			arrowPrev: false,
+			arrowNext: false,
+			imageClickAction: "close",
+			tapAction: "close",
+			doubleTapAction: "zoom",
+		});
+		lightbox.addFilter("domItemData", (data, element) => {
+			if (element instanceof HTMLImageElement) {
+				// Use the largest srcset candidate so zooming is not capped at the displayed width.
+				const attrWidth = Number(element.getAttribute("width")) || element.naturalWidth;
+				const attrHeight = Number(element.getAttribute("height")) || element.naturalHeight;
+				let src = element.currentSrc || element.src;
+				let width = attrWidth;
+				for (const candidate of element.srcset.split(",")) {
+					const [url, descriptor] = candidate.trim().split(/\s+/);
+					const candidateWidth = Number.parseInt(descriptor ?? "", 10);
+					if (candidateWidth > width) {
+						src = url;
+						width = candidateWidth;
+					}
+				}
+				data.src = src;
+				data.srcset = element.srcset;
+				data.msrc = element.currentSrc || element.src;
+				data.width = width;
+				data.height = Math.round((width * attrHeight) / attrWidth);
+				data.alt = element.alt;
+				data.element = element;
+			}
+			return data;
+		});
+		lightbox.init();
+	}
+</script>

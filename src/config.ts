@@ -12,7 +12,6 @@ export const siteConfig: SiteConfig = {
 	lang: "ja",
 	themeColor: {
 		hue: 270,
-		fixed: true,
 	},
 	toc: {
 		enable: true,

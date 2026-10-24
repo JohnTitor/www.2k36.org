@@ -1,10 +1,8 @@
 import partytown from "@astrojs/partytown";
 import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
-import svelte from "@astrojs/svelte";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
-import swup from "@swup/astro";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
@@ -24,6 +22,7 @@ import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
+import { optimizeLinkCards } from "./src/plugins/optimize-link-cards.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,27 +37,10 @@ export default defineConfig({
 		},
 	},
 	integrations: [
-		swup({
-			theme: false,
-			animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
-			// the default value `transition-` cause transition delay
-			// when the Tailwind class `transition-all` is used
-			containers: ["main", "#toc"],
-			smoothScrolling: true,
-			cache: true,
-			preload: true,
-			accessibility: true,
-			updateHead: true,
-			updateBodyClass: false,
-			globalInstance: true,
-		}),
-		icon({
-			include: {
-				"preprocess: vitePreprocess(),": ["*"],
-			},
-		}),
+		icon(),
+		optimizeLinkCards(),
 		expressiveCode({
-			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+			themes: [expressiveCodeConfig.theme],
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
@@ -102,7 +84,6 @@ export default defineConfig({
 				showCopyToClipboardButton: false,
 			},
 		}),
-		svelte(),
 		sitemap(),
 		partytown({
 			config: {
@@ -170,39 +151,13 @@ export default defineConfig({
 			],
 		}),
 	},
+	prefetch: { prefetchAll: true },
+	image: {
+		layout: "constrained",
+		responsiveStyles: true,
+		breakpoints: [480, 960, 1600],
+	},
 	vite: {
 		plugins: [tailwindcss()],
-		build: {
-			cssCodeSplit: true,
-			rollupOptions: {
-				onwarn(warning, warn) {
-					// temporarily suppress this warning
-					if (
-						warning.message.includes("is dynamically imported by") &&
-						warning.message.includes("but also statically imported by")
-					) {
-						return;
-					}
-					warn(warning);
-				},
-				output: {
-					manualChunks(id) {
-						if (id.includes("node_modules/@swup/astro")) {
-							return "swup";
-						}
-						if (
-							id.includes("node_modules/@iconify/svelte") ||
-							id.includes("node_modules/astro-icon")
-						) {
-							return "icons";
-						}
-					},
-				},
-			},
-		},
-		ssr: {
-			// Prevent SSR issues with certain packages
-			noExternal: ["photoswipe", "overlayscrollbars"],
-		},
 	},
 });

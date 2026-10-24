@@ -16,7 +16,7 @@ for (const heading of headings) {
 
 const className = Astro.props.class;
 
-const isPostsRoute = Astro.url.pathname.startsWith("/posts/");
+const isPostsRoute = /^\/(en\/)?posts\//.test(Astro.url.pathname);
 
 const removeTailingHash = (text: string) => {
 	let lastIndexOfHash = text.lastIndexOf("#");
@@ -96,6 +96,7 @@ class TableOfContents extends HTMLElement {
     };
 
     toggleActiveHeading = () => {
+        if (!this.tocEntries.length || !this.isConnected) return;
         let i = this.active.length - 1;
         let min = this.active.length - 1, max = 0;
         while (i >= 0 && !this.active[i]) {
@@ -199,15 +200,7 @@ class TableOfContents extends HTMLElement {
     };
 
     connectedCallback() {
-        // wait for the onload animation to finish, which makes the `getBoundingClientRect` return correct values
-        const element = document.querySelector('.prose');
-        if (element) {
-            element.addEventListener('animationend', () => {
-                this.init();
-            }, { once: true });
-        } else {
-            console.debug('Animation element not found');
-        }
+        this.init();
     };
 
     init() {
@@ -256,7 +249,7 @@ class TableOfContents extends HTMLElement {
             if (section) this.observer.unobserve(section);
         });
         this.observer.disconnect();
-        this.tocEl?.removeEventListener("click", this.handleAnchorClick);
+        this.tocEl?.removeEventListener("click", this.handleAnchorClick, true);
     };
 }
 

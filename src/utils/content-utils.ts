@@ -1,10 +1,33 @@
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 import type { ArchivePost } from "@/types/archive";
 
-async function getSortedPostsInternal(locale?: string): Promise<CollectionEntry<"posts">[]> {
+const postLists = new Map<string, Promise<CollectionEntry<"posts">[]>>();
+const renderedPosts = new Map<string, ReturnType<typeof render>>();
+
+export function renderPost(entry: CollectionEntry<"posts">): ReturnType<typeof render> {
+	if (import.meta.env.DEV) return render(entry);
+	let rendered = renderedPosts.get(entry.id);
+	if (!rendered) {
+		rendered = render(entry);
+		renderedPosts.set(entry.id, rendered);
+	}
+	return rendered;
+}
+
+function getSortedPostsInternal(locale = "ja"): Promise<CollectionEntry<"posts">[]> {
+	if (import.meta.env.DEV) return loadSortedPosts(locale);
+	let posts = postLists.get(locale);
+	if (!posts) {
+		posts = loadSortedPosts(locale);
+		postLists.set(locale, posts);
+	}
+	return posts;
+}
+
+async function loadSortedPosts(locale: string): Promise<CollectionEntry<"posts">[]> {
 	const allBlogPosts: CollectionEntry<"posts">[] = await getCollection(
 		"posts",
 		(entry: CollectionEntry<"posts">) => {
@@ -63,20 +86,7 @@ export type Tag = {
 };
 
 export async function getTagList(locale?: string): Promise<Tag[]> {
-	const allBlogPosts: CollectionEntry<"posts">[] = await getCollection(
-		"posts",
-		(entry: CollectionEntry<"posts">) => {
-			const { data, id } = entry;
-			// Filter by locale if provided
-			if (locale === "en") {
-				if (!id.startsWith("en/")) return false;
-			} else if (locale === "ja" || !locale) {
-				// For Japanese (default), exclude English posts
-				if (id.startsWith("en/")) return false;
-			}
-			return import.meta.env.PROD ? data.draft !== true : true;
-		},
-	);
+	const allBlogPosts = await getSortedPostsInternal(locale);
 
 	const countMap: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { tags: string[] } }) => {
@@ -101,20 +111,7 @@ export type Category = {
 };
 
 export async function getCategoryList(locale?: string): Promise<Category[]> {
-	const allBlogPosts: CollectionEntry<"posts">[] = await getCollection(
-		"posts",
-		(entry: CollectionEntry<"posts">) => {
-			const { data, id } = entry;
-			// Filter by locale if provided
-			if (locale === "en") {
-				if (!id.startsWith("en/")) return false;
-			} else if (locale === "ja" || !locale) {
-				// For Japanese (default), exclude English posts
-				if (id.startsWith("en/")) return false;
-			}
-			return import.meta.env.PROD ? data.draft !== true : true;
-		},
-	);
+	const allBlogPosts = await getSortedPostsInternal(locale);
 	const count: { [key: string]: number } = {};
 	allBlogPosts.forEach((post: { data: { category: string | null } }) => {
 		if (!post.data.category) {

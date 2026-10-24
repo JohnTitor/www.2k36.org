@@ -7,7 +7,6 @@ export type SiteConfig = {
 
 	themeColor: {
 		hue: number;
-		fixed: boolean;
 	};
 	toc: {
 		enable: boolean;

@@ -1,11 +1,11 @@
 ---
-import { render } from "astro:content";
 import path from "node:path";
 import Markdown from "@components/misc/Markdown.astro";
+import PhotoGallery from "@components/misc/PhotoGallery.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
+import { getSortedPosts, renderPost } from "@utils/content-utils";
 import { getDir, getPostUrlById } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import Giscus from "../../components/comment/Giscus.astro";
@@ -24,13 +24,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 
-const ogImageUrl = entry.data.ogImage || `/og/${entry.id}.png`;
+const ogImageUrl = entry.data.ogImage || `/og/${entry.id}.jpg`;
 const postUrl = new URL(getPostUrlById(entry.id), Astro.site).href;
 const shareText = encodeURIComponent(`${entry.data.title}｜2k36 ${postUrl}`);
 
-const { Content, headings } = await render(entry);
-
-const { remarkPluginFrontmatter } = await render(entry);
+const { Content, headings, remarkPluginFrontmatter } = await renderPost(entry);
+const hasImages = Boolean(entry.data.image) || /!\[/.test(entry.body ?? "");
 
 const jsonLd = {
 	"@context": "https://schema.org",
@@ -55,7 +54,7 @@ const jsonLd = {
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
         ]}>
-            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
+            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition ">
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:notes-rounded"></Icon>
@@ -70,7 +69,7 @@ const jsonLd = {
                 </div>
             </div>
 
-            <div class="relative onload-animation">
+            <div class="relative ">
                 <div
                     data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title"
                     class="transition w-full block font-bold mb-3
@@ -83,7 +82,7 @@ const jsonLd = {
                 </div>
             </div>
 
-            <div class="onload-animation">
+            <div>
                 <PostMetadata
                         class="mb-5"
                         published={entry.data.published}
@@ -95,11 +94,11 @@ const jsonLd = {
             </div>
 
             {entry.data.image &&
-                <ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/posts/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation"/>
+                <ImageWrapper id="post-cover" loading="eager" src={entry.data.image} basePath={path.join("content/posts/", getDir(entry.id))} class="mb-8 rounded-xl banner-container "/>
             }
 
 
-            <Markdown class="mb-6 markdown-content onload-animation">
+            <Markdown class="mb-6 markdown-content ">
                 <Content />
             </Markdown>
             <div class="flex justify-end mb-4">
@@ -110,7 +109,7 @@ const jsonLd = {
                     </a>
                 </div>
             </div>
-            <div class="flex gap-2 mt-5 mb-5 justify-end onload-animation">
+            <div class="flex gap-2 mt-5 mb-5 justify-end ">
                 <div class="relative">
                     <a href={`https://bsky.app/intent/compose?text=${shareText}`} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90 group">
                         <Icon name="line-md:bluesky" class="text-[1.5rem]"></Icon>
@@ -155,6 +154,7 @@ const jsonLd = {
         </a>
     </div>
 
+    {hasImages && <PhotoGallery />}
     <Giscus />
 
 </MainGridLayout>

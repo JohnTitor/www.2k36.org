@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCurrentLocale, getLocalizedUrl } from "@utils/url-utils";
+
+const locale = getCurrentLocale(Astro.url.pathname);
+const basePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const locales = [
+	{ value: "ja", label: "日本語", icon: "material-symbols:language-japanese-kana" },
+	{ value: "en", label: "English", icon: "material-symbols:language-us" },
+];
+---
+
+<div class="locale-switch relative z-50">
+	<a aria-label="Language" data-locale-link href={getLocalizedUrl(basePath, locale === "ja" ? "en" : "ja")} class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="lang-switch">
+		<Icon name={locales.find((item) => item.value === locale)!.icon} class="text-[1.25rem]" />
+	</a>
+	<div id="lang-panel" class="hidden lg:block absolute transition float-panel-closed top-11 -right-2 pt-5">
+		<div class="card-base float-panel p-2">
+			{locales.map((item) => (
+				<a data-locale-link href={getLocalizedUrl(basePath, item.value)} lang={item.value} aria-current={locale === item.value ? "true" : undefined}
+					class:list={["flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5 last:mb-0", { "current-theme-btn": locale === item.value }]}>
+					<Icon name={item.icon} class="text-[1.25rem] mr-3" />
+					{item.label}
+				</a>
+			))}
+		</div>
+	</div>
+</div>
+
+<style>
+	.locale-switch:hover #lang-panel,
+	.locale-switch:focus-within #lang-panel { opacity: 1; transform: none; pointer-events: auto; }
+</style>
+
+<script>
+	for (const link of document.querySelectorAll<HTMLAnchorElement>("[data-locale-link]")) {
+		link.addEventListener("click", () => {
+			const target = new URL(link.href);
+			target.search = window.location.search;
+			target.hash = window.location.hash;
+			link.href = target.href;
+		});
+	}
+</script>

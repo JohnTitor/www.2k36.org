@@ -13,3 +13,7 @@
 .pswp__button--close {
 	@apply mr-4!;
 }
+
+#post-container img:not(.remark-link-card-plus__image) {
+	cursor: zoom-in;
+}

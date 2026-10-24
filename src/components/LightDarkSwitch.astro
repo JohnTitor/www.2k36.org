@@ -1,0 +1,72 @@
+---
+import { Icon } from "astro-icon/components";
+import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+
+const modes = [
+	{ value: LIGHT_MODE, icon: "line-md:moon-alt-to-sunny-outline-loop-transition", label: I18nKey.lightMode },
+	{ value: DARK_MODE, icon: "line-md:moon-alt-loop", label: I18nKey.darkMode },
+	{ value: AUTO_MODE, icon: "line-md:cog-filled-loop", label: I18nKey.systemMode },
+];
+---
+
+<div id="theme-switch" class="relative z-50">
+	<button aria-label="Light/Dark Mode" class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="scheme-switch">
+		{modes.map((mode) => (
+			<div class="absolute" data-theme-icon={mode.value}>
+				<Icon name={mode.icon} class="text-[1.25rem]" />
+			</div>
+		))}
+	</button>
+	<div id="light-dark-panel" class="hidden lg:block absolute transition float-panel-closed top-11 -right-2 pt-5">
+		<div class="card-base float-panel p-2">
+			{modes.map((mode) => (
+				<button data-theme-choice={mode.value} class="flex transition whitespace-nowrap items-center !justify-start w-full btn-plain scale-animation rounded-lg h-9 px-3 font-medium active:scale-95 mb-0.5 last:mb-0">
+					<Icon name={mode.icon} class="text-[1.25rem] mr-3" />
+					{i18n(mode.label)}
+				</button>
+			))}
+		</div>
+	</div>
+</div>
+
+<style>
+	[data-theme-icon] { opacity: 0; }
+	:global(html[data-theme-mode="light"]) [data-theme-icon="light"],
+	:global(html[data-theme-mode="dark"]) [data-theme-icon="dark"],
+	:global(html[data-theme-mode="auto"]) [data-theme-icon="auto"],
+	:global(html:not([data-theme-mode])) [data-theme-icon="auto"] { opacity: 1; }
+	#theme-switch:hover #light-dark-panel,
+	#theme-switch:focus-within #light-dark-panel { opacity: 1; transform: none; pointer-events: auto; }
+</style>
+
+<script>
+	import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
+	import { applyThemeToDocument, getStoredTheme, setTheme } from "@utils/setting-utils";
+	import type { LIGHT_DARK_MODE } from "@/types/config";
+
+	const modes: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE, AUTO_MODE];
+	const choices = document.querySelectorAll<HTMLButtonElement>("[data-theme-choice]");
+	function updateSelection() {
+		for (const choice of choices) {
+			const selected = choice.dataset.themeChoice === getStoredTheme();
+			choice.classList.toggle("current-theme-btn", selected);
+			choice.setAttribute("aria-pressed", String(selected));
+		}
+	}
+	function selectTheme(mode: LIGHT_DARK_MODE) {
+		setTheme(mode);
+		updateSelection();
+	}
+	document.getElementById("scheme-switch")?.addEventListener("click", () => {
+		selectTheme(modes[(modes.indexOf(getStoredTheme()) + 1) % modes.length]);
+	});
+	for (const choice of choices) {
+		choice.addEventListener("click", () => selectTheme(choice.dataset.themeChoice as LIGHT_DARK_MODE));
+	}
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+		applyThemeToDocument(getStoredTheme());
+	});
+	updateSelection();
+</script>
