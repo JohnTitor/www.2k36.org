@@ -41,18 +41,18 @@ const {
         <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-[17.5rem_auto] grid-rows-[auto_1fr_auto] lg:grid-rows-[auto]
     mx-auto gap-4 px-0 md:px-4"
         >
-            <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>
+            <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem]" headings={headings}></SideBar>
 
-            <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden">
-                <div id="content-wrapper" class="onload-animation">
+            <main id="main-content" class="col-span-2 lg:col-span-1 overflow-hidden">
+                <div id="content-wrapper">
                     <slot></slot>
-                    <div class="footer col-span-2 onload-animation hidden lg:block">
+                    <div class="footer col-span-2 hidden lg:block">
                         <Footer></Footer>
                     </div>
                 </div>
             </main>
 
-            <div class="footer col-span-2 onload-animation block lg:hidden">
+            <div class="footer col-span-2 block lg:hidden">
                 <Footer></Footer>
             </div>
         </div>
@@ -67,7 +67,7 @@ const {
             {"toc-hide": false}]}
         >
             <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar">
-                <div id="toc" class="w-full h-full transition-swup-fade ">
+                <div id="toc" class="w-full h-full">
                     <div class="h-8 w-full"></div>
                     <TOC headings={headings}></TOC>
                     <div class="h-8 w-full"></div>

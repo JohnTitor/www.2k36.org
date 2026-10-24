@@ -26,8 +26,6 @@ export const ja: Translation = {
 	[Key.postCount]: "post",
 	[Key.postsCount]: "posts",
 
-	[Key.themeColor]: "Theme Color",
-
 	[Key.lightMode]: "Light",
 	[Key.darkMode]: "Dark",
 	[Key.systemMode]: "System",

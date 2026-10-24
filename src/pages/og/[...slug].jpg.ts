@@ -221,11 +221,11 @@ export const GET: APIRoute = async ({ params, props }) => {
 	drawMeta(ctx, published);
 	drawTitle(ctx, title);
 
-	const buffer = canvas.toBuffer("image/png");
+	const buffer = canvas.toBuffer("image/jpeg", 85);
 	return new Response(new Uint8Array(buffer), {
 		headers: {
-			"Content-Type": "image/png",
-			"Cache-Control": "public, max-age=31536000, immutable",
+			"Content-Type": "image/jpeg",
+			"Cache-Control": "public, max-age=86400",
 		},
 	});
 };

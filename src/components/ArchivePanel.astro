@@ -1,23 +1,16 @@
-<script lang="ts">
-import { onMount } from "svelte";
-
+---
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getPostUrlById } from "../utils/url-utils";
 import type { ArchivePost } from "../types/archive";
-
-export let tags: string[] = [];
-export let categories: string[] = [];
-export let sortedPosts: ArchivePost[] = [];
-
-let uncategorized: string | null = null;
+interface Props { sortedPosts: ArchivePost[]; }
+const { sortedPosts } = Astro.props;
 
 interface Group {
 	year: number;
 	posts: ArchivePost[];
 }
 
-let groups: Group[] = [];
 
 function formatDate(date: Date) {
 	const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -52,41 +45,13 @@ function groupPosts(posts: ArchivePost[]): Group[] {
 	return groupedPostsArray;
 }
 
-groups = groupPosts(sortedPosts);
+const groups = groupPosts(sortedPosts);
 
-onMount(async () => {
-	const params = new URLSearchParams(window.location.search);
-	tags = params.has("tag") ? params.getAll("tag") : [];
-	categories = params.has("category") ? params.getAll("category") : [];
-	uncategorized = params.get("uncategorized");
+---
 
-	let filteredPosts: ArchivePost[] = sortedPosts;
-
-	if (tags.length > 0) {
-		filteredPosts = filteredPosts.filter(
-			(post) =>
-				Array.isArray(post.data.tags) &&
-				post.data.tags.some((tag) => tags.includes(tag)),
-		);
-	}
-
-	if (categories.length > 0) {
-		filteredPosts = filteredPosts.filter(
-			(post) => post.data.category && categories.includes(post.data.category),
-		);
-	}
-
-	if (uncategorized) {
-		filteredPosts = filteredPosts.filter((post) => !post.data.category);
-	}
-
-	groups = groupPosts(filteredPosts);
-});
-</script>
-
-<div class="card-base px-8 py-6">
-    {#each groups as group}
-        <div>
+<div id="archive-panel" class="card-base px-8 py-6">
+    {groups.map((group) => (
+        <div data-archive-year>
             <div class="flex flex-row w-full items-center h-[3.75rem]">
                 <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">
                     {group.year}
@@ -98,13 +63,16 @@ onMount(async () => {
                     ></div>
                 </div>
                 <div class="w-[70%] md:w-[80%] transition text-left text-50">
-                    {group.posts.length} {i18n(I18nKey.postsCount)}
+                    <span data-post-count>{group.posts.length}</span> {i18n(I18nKey.postsCount)}
                 </div>
             </div>
 
-            {#each group.posts as post}
-                {#if post.data.category === "Zenn"}
+            {group.posts.map((post) => (
+                post.data.category === "Zenn" ? (
                     <a
+                        data-archive-post
+                        data-tags={JSON.stringify(post.data.tags)}
+                        data-category={post.data.category || ""}
                         href={`https://zenn.dev${post.data.zennPath}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -142,8 +110,11 @@ onMount(async () => {
                             </div>
                         </div>
                     </a>
-                {:else}
+                ) : (
                     <a
+                        data-archive-post
+                        data-tags={JSON.stringify(post.data.tags)}
+                        data-category={post.data.category || ""}
                         href={getPostUrlById(post.id)}
                         aria-label={post.data.title}
                         class="group btn-plain !block w-full rounded-lg hover:text-[initial] py-2"
@@ -178,8 +149,30 @@ onMount(async () => {
                             </div>
                         </div>
                     </a>
-                {/if}
-            {/each}
+                )
+            ))}
         </div>
-    {/each}
+    ))}
 </div>
+
+<style>
+    #archive-panel [hidden] { display: none !important; }
+</style>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const tags = params.getAll("tag");
+    const categories = params.getAll("category");
+    for (const group of document.querySelectorAll<HTMLElement>("[data-archive-year]")) {
+        let count = 0;
+        for (const post of group.querySelectorAll<HTMLElement>("[data-archive-post]")) {
+            const postTags: string[] = JSON.parse(post.dataset.tags!);
+            const category = post.dataset.category!;
+            post.hidden = (tags.length > 0 && !postTags.some((tag) => tags.includes(tag)))
+                || (categories.length > 0 && !categories.includes(category))
+                || (!!params.get("uncategorized") && !!category);
+            if (!post.hidden) count++;
+        }
+        group.hidden = count === 0;
+        group.querySelector("[data-post-count]")!.textContent = String(count);
+    }
+</script>

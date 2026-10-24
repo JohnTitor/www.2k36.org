@@ -12,7 +12,7 @@ export default defineConfig({
 	reporter: "html",
 	timeout: 60000, // 60 seconds timeout
 	use: {
-		baseURL: "http://localhost:4321",
+		baseURL: "http://localhost:4322",
 		trace: "on-first-retry",
 		actionTimeout: 10000, // Action timeout
 		navigationTimeout: 30000, // Navigation timeout
@@ -42,10 +42,10 @@ export default defineConfig({
 		},
 	],
 
-	/* Run your local dev server before starting the tests */
+	/* Test production assets, including the generated Pagefind index. */
 	webServer: {
-		command: "pnpm dev",
-		url: "http://localhost:4321",
+		command: "pnpm build && pnpm preview --port 4322 --ignore-lock",
+		url: "http://localhost:4322",
 		reuseExistingServer: true,
 		timeout: 120000, // 2 minutes timeout
 	},

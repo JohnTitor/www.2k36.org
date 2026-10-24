@@ -3,7 +3,8 @@ import { giscusConfig } from "@/config";
 ---
 
 <div id="giscus_container">
-  <script is:inline src="https://giscus.app/client.js"
+  <template id="giscus-template">
+  <script is:inline data-src="https://giscus.app/client.js"
     data-repo={giscusConfig.repo}
     data-repo-id={giscusConfig.repoId}
     data-category={giscusConfig.category}
@@ -19,4 +20,20 @@ import { giscusConfig } from "@/config";
     crossorigin="anonymous"
     async>
   </script>
+  </template>
 </div>
+
+<script>
+	const container = document.getElementById("giscus_container")!;
+	const observer = new IntersectionObserver((entries) => {
+		if (!entries.some((entry) => entry.isIntersecting)) return;
+		observer.disconnect();
+		const template = document.getElementById("giscus-template") as HTMLTemplateElement;
+		const source = template.content.querySelector("script")!;
+		const script = document.createElement("script");
+		for (const attribute of source.attributes) script.setAttribute(attribute.name, attribute.value);
+		script.src = source.dataset.src!;
+		container.append(script);
+	}, { rootMargin: "300px" });
+	observer.observe(container);
+</script>

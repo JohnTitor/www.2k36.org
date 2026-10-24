@@ -1,0 +1,101 @@
+---
+import { Icon } from "astro-icon/components";
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+---
+
+<div id="search-bar" class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10">
+	<Icon name="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 my-auto text-black/30 dark:text-white/30" />
+	<input data-search-input aria-label={i18n(I18nKey.search)} placeholder={i18n(I18nKey.search)} class="transition-all pl-10 text-sm bg-transparent outline-0 h-full w-40 active:w-60 focus:w-60 text-black/50 dark:text-white/50" />
+</div>
+<button aria-label="Search Panel" id="search-switch" class="btn-plain scale-animation lg:!hidden rounded-lg w-11 h-11 active:scale-90">
+	<Icon name="material-symbols:search" class="text-[1.25rem]" />
+</button>
+<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem] top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
+	<div class="flex relative lg:hidden transition-all items-center h-11 rounded-xl bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10">
+		<Icon name="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 my-auto text-black/30 dark:text-white/30" />
+		<input data-search-input aria-label={i18n(I18nKey.search)} placeholder={i18n(I18nKey.search)} class="pl-10 absolute inset-0 text-sm bg-transparent outline-0 text-black/50 dark:text-white/50" />
+	</div>
+	<div id="search-results" aria-live="polite"></div>
+	<template id="search-result-template">
+		<a class="transition first:mt-2 lg:first:mt-0 group block rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
+			<div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
+				<span data-result-title></span><span aria-hidden="true" class="text-[var(--primary)] ml-1">›</span>
+			</div>
+			<div data-result-excerpt class="text-sm text-50"></div>
+		</a>
+	</template>
+</div>
+
+<style>
+	.search-panel { max-height: calc(100vh - 100px); overflow-y: auto; }
+</style>
+
+<script>
+	interface SearchResult { url: string; meta: { title: string }; excerpt: string; }
+	interface Pagefind {
+		options(options: { excerptLength: number }): Promise<void>;
+		search(query: string): Promise<{ results: { data(): Promise<SearchResult> }[] }>;
+	}
+
+	let pagefind: Promise<Pagefind> | undefined;
+	const inputs = document.querySelectorAll<HTMLInputElement>("[data-search-input]");
+	const panel = document.getElementById("search-panel")!;
+	const results = document.getElementById("search-results")!;
+	const template = document.getElementById("search-result-template") as HTMLTemplateElement;
+	let version = 0;
+	let timer: ReturnType<typeof setTimeout>;
+
+	async function search(keyword: string, request: number) {
+		if (!keyword) return;
+		if (import.meta.env.DEV) {
+			results.textContent = "Search is available in the production preview (pnpm build && pnpm preview).";
+			panel.classList.remove("float-panel-closed");
+			return;
+		}
+		try {
+			const scriptUrl = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
+			pagefind ??= import(/* @vite-ignore */ scriptUrl).then(async (module: Pagefind) => {
+				await module.options({ excerptLength: 20 });
+				return module;
+			});
+			const response = await (await pagefind).search(keyword);
+			const matches = await Promise.all(response.results.map((result) => result.data()));
+			if (request !== version) return;
+			results.replaceChildren(...matches.map((match) => {
+				const fragment = template.content.cloneNode(true) as DocumentFragment;
+				fragment.querySelector("a")!.href = match.url;
+				fragment.querySelector("[data-result-title]")!.textContent = match.meta.title;
+				fragment.querySelector("[data-result-excerpt]")!.innerHTML = match.excerpt;
+				return fragment;
+			}));
+			if (window.matchMedia("(min-width: 1024px)").matches) {
+				panel.classList.toggle("float-panel-closed", matches.length === 0);
+			}
+		} catch (error) {
+			pagefind = undefined;
+			console.error("Search failed:", error);
+		}
+	}
+	for (const input of inputs) {
+		input.addEventListener("input", () => {
+			const keyword = input.value.trim();
+			for (const other of inputs) other.value = input.value;
+			const request = ++version;
+			clearTimeout(timer);
+			results.replaceChildren();
+			if (!keyword && window.matchMedia("(min-width: 1024px)").matches) panel.classList.add("float-panel-closed");
+			timer = setTimeout(() => search(keyword, request), 150);
+		});
+		input.addEventListener("focus", () => {
+			if (results.childElementCount) panel.classList.remove("float-panel-closed");
+		});
+	}
+	document.getElementById("search-switch")!.addEventListener("click", () => {
+		panel.classList.toggle("float-panel-closed");
+		if (!panel.classList.contains("float-panel-closed")) inputs[1].focus();
+	});
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") panel.classList.add("float-panel-closed");
+	});
+</script>

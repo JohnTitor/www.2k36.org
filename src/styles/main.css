@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./variables.css";
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
@@ -86,10 +87,6 @@
 	@apply opacity-0 pointer-events-none;
 }
 
-@utility toc-not-ready {
-	@apply opacity-0 pointer-events-none;
-}
-
 @utility hide-scrollbar {
 	scrollbar-width: none;
 	-ms-overflow-style: none;
@@ -144,28 +141,6 @@
 }
 
 @layer components {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	p,
-	a,
-	span,
-	li,
-	ul,
-	ol,
-	blockquote,
-	code,
-	pre,
-	table,
-	th,
-	td,
-	strong {
-		@apply transition;
-	}
-
 	#toc-inner-wrapper {
 		mask-image: linear-gradient(
 			to bottom,
@@ -175,11 +150,6 @@
 			transparent 100%
 		);
 	}
-}
-
-.custom-md img:not(.remark-link-card-plus__image),
-#post-cover img {
-	@apply cursor-zoom-in;
 }
 
 ::selection {
@@ -204,4 +174,14 @@
 
 .collapsed {
 	height: var(--collapsedHeight);
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*) {
+		animation: none;
+	}
 }
