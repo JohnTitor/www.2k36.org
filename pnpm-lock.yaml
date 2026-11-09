@@ -246,7 +246,7 @@ importers:
         version: 2.1.0(supports-color@7.2.0)
       remark-link-card-plus:
         specifier: ^0.8.0
-        version: 0.8.1(supports-color@7.2.0)
+        version: 0.8.2(supports-color@7.2.0)
       remark-sectionize:
         specifier: ^2.1.0
         version: 2.1.0
@@ -1589,8 +1589,8 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
 
-  '@tokenizer/inflate@0.4.1':
-    resolution: {integrity: sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA==}
+  '@tokenizer/inflate@0.6.0':
+    resolution: {integrity: sha512-+0RDxhBkyT9xMnGdJAwmats9yxRLR8ypJrQgrnLqOu4Gv/aHlnxYgdGVy2QTwvBl6IF/w2Hr+ZNirH+iMUbVZA==}
     engines: {node: '>=18'}
 
   '@tokenizer/token@0.3.0':
@@ -2183,8 +2183,8 @@ packages:
   fflate@0.8.3:
     resolution: {integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==}
 
-  file-type@22.0.2:
-    resolution: {integrity: sha512-0H8TsCUGBLx+V5adH3EY52hTAcyLKbV1D4gq5cIOJ6DnQAHeV9Z2Hhuc5CoBX4YmvB2oL+JIC84z0qO7JsCoNw==}
+  file-type@22.3.0:
+    resolution: {integrity: sha512-PrPedgnnWl5bWz3JHgar0QSzRvzeyFh7dZ9JpYOgcPZu4KALS9zw4MMa6qXRYyjeBsAlpaWB2boLuG991+0HIQ==}
     engines: {node: '>=22'}
 
   flattie@1.1.1:
@@ -2979,8 +2979,8 @@ packages:
     resolution: {integrity: sha512-bI3E4Oj1pKY3ym2IQrrVCdORgEu0+mSrWgpCYFNy8QvytfnLs/nAacVPjkWU/JzDMUiQio2k4nTFP7bsIr9TSA==}
     engines: {pnpm: '>=9.0.0'}
 
-  remark-link-card-plus@0.8.1:
-    resolution: {integrity: sha512-Lm1LeLukYGGtBjfWLZkhLcXy8rnTKFxfn2OKuKsW6v+kPziT5daVvCLTpnJ8sNSEGAlSUy9ZBEM6e6+UMm5HxA==}
+  remark-link-card-plus@0.8.2:
+    resolution: {integrity: sha512-hInHUWi1oKwyGhbQlDra7z2Jxi6I6NgMSWgPNC64kJdTgdeHLuXE9mfgEV2Mug3P+vzyY0FQHbe+XLqWI+l40Q==}
     engines: {node: '>=22.13.0'}
 
   remark-mdx@3.1.1:
@@ -3150,8 +3150,8 @@ packages:
   strnum@2.4.1:
     resolution: {integrity: sha512-M9eUSMT2dCB2cTNPG7UYj6KuK7RJR2SN2+yCV/fTW3xzTCS6EaGZ5pSMgDIjB7r8zSfTGk+dvvn9rTjpVS9Mwg==}
 
-  strtok3@10.3.5:
-    resolution: {integrity: sha512-ki4hZQfh5rX0QDLLkOCj+h+CVNkqmp/CMf8v8kZpkNVK6jGQooMytqzLZYUVYIZcFZ6yDB70EfD8POcFXiF5oA==}
+  strtok3@10.7.0:
+    resolution: {integrity: sha512-iAqrCpp7UXD2FZiHWhLXqdJ6CmNeVzRkkHAyyhhKMVtbVm2KtPX3D/bJNonvtcyLTHS4rwqP2pz9fsjK1K4z0Q==}
     engines: {node: '>=18'}
 
   style-to-js@1.1.21:
@@ -3251,8 +3251,8 @@ packages:
   ufo@1.6.4:
     resolution: {integrity: sha512-JFNbkD1Svwe0KvGi8GOeLcP4kAWQ609twvCdcHxq1oSL8svv39ZuSvajcD8B+5D0eL4+s1Is2D/O6KN3qcTeRA==}
 
-  uint8array-extras@1.5.0:
-    resolution: {integrity: sha512-rvKSBiC5zqCCiDZ9kAOszZcDvdAHwwIKJG33Ykj43OKcWsnmcBRL09YTU4nOeHZ8Y2a7l1MgTd08SBe9A8Qj6A==}
+  uint8array-extras@1.6.0:
+    resolution: {integrity: sha512-8iAasVS4wUx0gPLjH8Xtz2PeDzTSiy8QiLGu2DT3X5GU+egFEQhpnbtkehbAwjvDcxIERmCYcysiODFmE3Ud0Q==}
     engines: {node: '>=18'}
 
   ultrahtml@1.7.0:
@@ -4674,9 +4674,10 @@ snapshots:
       tailwindcss: 4.3.4
       vite: 8.3.5(@types/node@26.6.6)(esbuild@0.28.1)(jiti@2.7.0)(stylus@0.64.0(supports-color@7.2.0))(terser@5.46.0)(yaml@2.9.0)
 
-  '@tokenizer/inflate@0.4.1(supports-color@7.2.0)':
+  '@tokenizer/inflate@0.6.0(supports-color@7.2.0)':
     dependencies:
       debug: 4.4.3(supports-color@7.2.0)
+      strtok3: 10.7.0
       token-types: 6.1.2
     transitivePeerDependencies:
       - supports-color
@@ -5359,12 +5360,12 @@ snapshots:
 
   fflate@0.8.3: {}
 
-  file-type@22.0.2(supports-color@7.2.0):
+  file-type@22.3.0(supports-color@7.2.0):
     dependencies:
-      '@tokenizer/inflate': 0.4.1(supports-color@7.2.0)
-      strtok3: 10.3.5
+      '@tokenizer/inflate': 0.6.0(supports-color@7.2.0)
+      strtok3: 10.7.0
       token-types: 6.1.2
-      uint8array-extras: 1.5.0
+      uint8array-extras: 1.6.0
     transitivePeerDependencies:
       - supports-color
 
@@ -6631,10 +6632,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remark-link-card-plus@0.8.1(supports-color@7.2.0):
+  remark-link-card-plus@0.8.2(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      file-type: 22.0.2(supports-color@7.2.0)
+      file-type: 22.3.0(supports-color@7.2.0)
       open-graph-scraper: 6.12.0
       sanitize-html: 2.18.1
       unified: 11.0.5
@@ -6905,7 +6906,7 @@ snapshots:
     dependencies:
       anynum: 1.0.1
 
-  strtok3@10.3.5:
+  strtok3@10.7.0:
     dependencies:
       '@tokenizer/token': 0.3.0
 
@@ -7027,7 +7028,7 @@ snapshots:
 
   ufo@1.6.4: {}
 
-  uint8array-extras@1.5.0: {}
+  uint8array-extras@1.6.0: {}
 
   ultrahtml@1.7.0: {}
 
