@@ -1,16 +1,52 @@
 {
-	"headers": [
+	"routes": [
 		{
-			"source": "/pagefind/fragment/:path*",
-			"headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+			"src": "^/$",
+			"headers": {
+				"Link": "</.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\", </sitemap-index.xml>; rel=\"describedby\"; type=\"application/xml\", </rss.xml>; rel=\"alternate\"; type=\"application/rss+xml\""
+			},
+			"continue": true
 		},
 		{
-			"source": "/pagefind/index/:path*",
-			"headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+			"src": "^/\\.well-known/api-catalog$",
+			"headers": {
+				"Content-Type": "application/linkset+json; profile=\"https://www.rfc-editor.org/info/rfc9727\"",
+				"Link": "</.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\""
+			},
+			"continue": true
 		},
 		{
-			"source": "/og/:path*",
-			"headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+			"src": "^/pagefind/(fragment|index)(/.*)?$",
+			"headers": { "Cache-Control": "public, max-age=31536000, immutable" },
+			"continue": true
+		},
+		{
+			"src": "^/og(/.*)?$",
+			"headers": { "Cache-Control": "public, max-age=86400" },
+			"continue": true
+		},
+		{
+			"src": "^/markdown/.*\\.md$",
+			"headers": { "Content-Type": "text/markdown; charset=utf-8" },
+			"continue": true
+		},
+		{
+			"src": "^(/(?:[^./]+/)*[^./]+)?/?$",
+			"headers": { "Vary": "Accept" },
+			"continue": true
+		},
+		{
+			"src": "^(/(?:[^./]+/)*[^./]+)?/?$",
+			"methods": ["GET", "HEAD"],
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": "^(?:.*,[ \\t]*)?[ \\t]*[tT][eE][xX][tT]/[mM][aA][rR][kK][dD][oO][wW][nN](?:[ \\t]*;[ \\t]*[qQ]=(?:1(?:\\.0*)?|0?\\.[0-9]*[1-9][0-9]*))?[ \\t]*(?:,.*)?$"
+				}
+			],
+			"dest": "/markdown$1/index.md",
+			"headers": { "Content-Type": "text/markdown; charset=utf-8" }
 		}
 	]
 }

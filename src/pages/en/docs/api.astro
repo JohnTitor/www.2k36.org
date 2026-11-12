@@ -1,0 +1,21 @@
+---
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/misc/Markdown.astro";
+import MainGridLayout from "../../../layouts/MainGridLayout.astro";
+
+const apiDoc = await getEntry("spec", "en/api");
+
+if (!apiDoc) {
+	throw new Error("API documentation not found");
+}
+
+const { Content, headings } = await render(apiDoc);
+---
+
+<MainGridLayout title="RSS API" description="How to retrieve the RSS feed and check availability" headings={headings}>
+	<div class="card-base px-9 py-6">
+		<Markdown class="mt-2">
+			<Content />
+		</Markdown>
+	</div>
+</MainGridLayout>
