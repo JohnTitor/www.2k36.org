@@ -23,6 +23,7 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { optimizeLinkCards } from "./src/plugins/optimize-link-cards.mjs";
+import { markdownForAgents } from "./src/plugins/markdown-for-agents.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,6 +40,7 @@ export default defineConfig({
 	integrations: [
 		icon(),
 		optimizeLinkCards(),
+		markdownForAgents(),
 		expressiveCode({
 			themes: [expressiveCodeConfig.theme],
 			plugins: [
