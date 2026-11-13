@@ -47,6 +47,27 @@
 			],
 			"dest": "/markdown$1/index.md",
 			"headers": { "Content-Type": "text/markdown; charset=utf-8" }
+		},
+		{ "handle": "error" },
+		{
+			"src": "^/.*$",
+			"status": 404,
+			"headers": { "Vary": "Accept" },
+			"continue": true
+		},
+		{
+			"src": "^/.*$",
+			"status": 404,
+			"methods": ["GET", "HEAD"],
+			"has": [
+				{
+					"type": "header",
+					"key": "accept",
+					"value": "^(?:.*,[ \\t]*)?[ \\t]*[tT][eE][xX][tT]/[mM][aA][rR][kK][dD][oO][wW][nN](?:[ \\t]*;[ \\t]*[qQ]=(?:1(?:\\.0*)?|0?\\.[0-9]*[1-9][0-9]*))?[ \\t]*(?:,.*)?$"
+				}
+			],
+			"dest": "/markdown/404.md",
+			"headers": { "Content-Type": "text/markdown; charset=utf-8" }
 		}
 	]
 }

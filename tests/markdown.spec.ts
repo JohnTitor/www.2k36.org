@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { getTransformedRoutes, type RouteWithSrc } from "@vercel/routing-utils";
+import { getTransformedRoutes, type HandleValue } from "@vercel/routing-utils";
 import { htmlToMarkdown } from "../src/plugins/markdown-for-agents.mjs";
 
 const config = JSON.parse(readFileSync("vercel.json", "utf8"));
@@ -8,9 +8,21 @@ const { routes, error } = getTransformedRoutes(config);
 if (error) throw new Error(error.message);
 
 // Check the deployment rules separately: Astro preview does not apply vercel.json.
-function routeRequest(pathname: string, accept = "", method = "GET") {
+function routeRequest(
+	pathname: string,
+	accept = "",
+	method = "GET",
+	phase: HandleValue | null = null,
+) {
 	const headers: Record<string, string> = {};
-	for (const route of routes as RouteWithSrc[]) {
+	let currentPhase: HandleValue | null = null;
+	let status: number | undefined;
+	for (const route of routes ?? []) {
+		if ("handle" in route) {
+			currentPhase = route.handle;
+			continue;
+		}
+		if (currentPhase !== phase) continue;
 		const pattern = new RegExp(route.src);
 		if (!pattern.test(pathname) || (route.methods && !route.methods.includes(method))) continue;
 		if (
@@ -20,9 +32,10 @@ function routeRequest(pathname: string, accept = "", method = "GET") {
 			continue;
 		}
 		Object.assign(headers, route.headers);
-		if (route.dest) return { pathname: pathname.replace(pattern, route.dest), headers };
+		status = route.status ?? status;
+		if (route.dest) return { pathname: pathname.replace(pattern, route.dest), headers, status };
 	}
-	return { pathname, headers };
+	return { pathname, headers, status };
 }
 
 test("Vercel selects Markdown for explicit Accept headers on GET and HEAD", () => {
@@ -75,6 +88,56 @@ test("HTML stays the default and non-HTML resources keep their routes", () => {
 		"immutable",
 	);
 	expect(routeRequest("/og/example.jpg").headers["Cache-Control"]).toBe("public, max-age=86400");
+});
+
+test("missing Markdown pages have a 404 error route and a useful Markdown body", async ({
+	request,
+}) => {
+	for (const pathname of [
+		"/some-path-that-does-not-exist",
+		"/en/posts/some-path-that-does-not-exist/",
+		"/some-path-that-does-not-exist.json",
+		"/markdown/some-path-that-does-not-exist/index.md",
+	]) {
+		const destination = routeRequest(pathname, "text/markdown").pathname;
+		const missing = await request.get(destination);
+		expect(missing.status(), destination).toBe(404);
+
+		for (const method of ["GET", "HEAD"]) {
+			const result = routeRequest(destination, "text/markdown", method, "error");
+			expect(result.status).toBe(404);
+			expect(result.pathname).toBe("/markdown/404.md");
+			expect(result.headers["Content-Type"]).toBe("text/markdown; charset=utf-8");
+			expect(result.headers.Vary).toBe("Accept");
+		}
+	}
+
+	// Preview serves the error document directly; Vercel applies the 404 status above.
+	const response = await request.get("/markdown/404.md");
+	expect(response.status()).toBe(200);
+	expect(response.headers()["content-type"]).toContain("text/markdown");
+	const markdown = await response.text();
+	expect(markdown).toMatch(/^# 404: Page not found\n/);
+	expect(markdown.split("\n\n")[1].length).toBeGreaterThanOrEqual(20);
+	expect(markdown).toContain("The requested page could not be found");
+	expect(markdown).not.toMatch(/<!doctype|<html/i);
+	for (const pathname of ["/docs/api/", "/sitemap-index.xml"]) {
+		expect(markdown).toContain(`](https://www.2k36.org${pathname})`);
+		expect((await request.get(pathname)).status()).toBe(200);
+	}
+});
+
+test("Markdown error negotiation honors Accept and leaves other errors alone", () => {
+	for (const accept of ["text/markdown;q=0.8", "text/html, text/markdown", "TEXT/MARKDOWN"]) {
+		expect(routeRequest("/missing", accept, "GET", "error").pathname).toBe("/markdown/404.md");
+	}
+	for (const accept of ["", "*/*", "text/html", "text/markdown;q=0", "text/markdown-extra"]) {
+		const result = routeRequest("/missing", accept, "GET", "error");
+		expect(result.pathname).toBe("/missing");
+		expect(result.headers["Content-Type"]).toBeUndefined();
+		expect(result.headers.Vary).toBe("Accept");
+	}
+	expect(routeRequest("/missing", "text/markdown", "POST", "error").pathname).toBe("/missing");
 });
 
 test("generated Markdown preserves content, code, tables, and image URLs", async ({ request }) => {
