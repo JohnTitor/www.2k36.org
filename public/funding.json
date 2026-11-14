@@ -1,0 +1,110 @@
+{
+	"$schema": "https://fundingjson.org/schema/v1.1.0.json",
+	"entity": {
+		"type": "individual",
+		"role": "maintainer",
+		"name": "Yuki Okushi",
+		"email": "huyuumi.dev@gmail.com",
+		"description": "Open source maintainer and contributor working on Rust, Actix, and other projects.",
+		"webpageUrl": {
+			"url": "https://www.2k36.org/en/about/",
+			"wellKnown": "https://www.2k36.org/.well-known/funding-manifest-urls"
+		}
+	},
+	"projects": [
+		{
+			"guid": "rust",
+			"name": "Rust",
+			"description": "The Rust programming language, compiler, and standard library.",
+			"webpageUrl": {
+				"url": "https://rust-lang.org/"
+			},
+			"repositoryUrl": {
+				"url": "https://github.com/rust-lang/rust"
+			},
+			"licenses": ["spdx:MIT", "spdx:Apache-2.0"],
+			"tags": ["rust", "programming-language", "compiler"]
+		},
+		{
+			"guid": "libc",
+			"name": "libc",
+			"description": "Rust bindings to C libraries and platform APIs.",
+			"webpageUrl": {
+				"url": "https://docs.rs/libc/"
+			},
+			"repositoryUrl": {
+				"url": "https://github.com/rust-lang/libc"
+			},
+			"licenses": ["spdx:MIT", "spdx:Apache-2.0"],
+			"tags": ["rust", "ffi", "system-programming"]
+		},
+		{
+			"guid": "notify-rs",
+			"name": "notify-rs",
+			"description": "Cross-platform filesystem notifications and event debouncing for Rust.",
+			"webpageUrl": {
+				"url": "https://docs.rs/notify/"
+			},
+			"repositoryUrl": {
+				"url": "https://github.com/notify-rs/notify"
+			},
+			"licenses": ["spdx:CC0-1.0", "spdx:MIT", "spdx:Apache-2.0"],
+			"tags": ["rust", "filesystem", "file-watching"]
+		},
+		{
+			"guid": "actix-web",
+			"name": "Actix Web",
+			"description": "An asynchronous web framework for Rust.",
+			"webpageUrl": {
+				"url": "https://actix.rs/"
+			},
+			"repositoryUrl": {
+				"url": "https://github.com/actix/actix-web"
+			},
+			"licenses": ["spdx:MIT", "spdx:Apache-2.0"],
+			"tags": ["rust", "web-framework", "http"]
+		},
+		{
+			"guid": "rust-phf",
+			"name": "rust-phf",
+			"description": "Compile-time maps and sets built with perfect hash functions for Rust.",
+			"webpageUrl": {
+				"url": "https://github.com/rust-phf/rust-phf"
+			},
+			"repositoryUrl": {
+				"url": "https://github.com/rust-phf/rust-phf"
+			},
+			"licenses": ["spdx:MIT"],
+			"tags": ["rust", "data-structures", "perfect-hashing"]
+		}
+	],
+	"funding": {
+		"channels": [
+			{
+				"guid": "github-sponsors",
+				"type": "payment-provider",
+				"address": "https://github.com/sponsors/JohnTitor"
+			}
+		],
+		"plans": [
+			{
+				"guid": "monthly-sponsorship",
+				"status": "active",
+				"name": "Monthly sponsorship",
+				"amount": 0,
+				"currency": "USD",
+				"frequency": "monthly",
+				"channels": ["github-sponsors"]
+			},
+			{
+				"guid": "one-time-sponsorship",
+				"status": "active",
+				"name": "One-time sponsorship",
+				"amount": 0,
+				"currency": "USD",
+				"frequency": "one-time",
+				"channels": ["github-sponsors"]
+			}
+		]
+	}
+}
