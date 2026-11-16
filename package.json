@@ -77,5 +77,5 @@
 		"sharp": "^0.35.0",
 		"typescript": "^6.0.0"
 	},
-	"packageManager": "pnpm@12.20.0"
+	"packageManager": "pnpm@12.21.0"
 }
