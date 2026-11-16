@@ -50,7 +50,7 @@
 		"remark-directive": "^4.0.0",
 		"remark-directive-rehype": "^1.0.0",
 		"remark-github-admonitions-to-directives": "^2.0.0",
-		"remark-link-card-plus": "^0.8.0",
+		"remark-link-card-plus": "^0.9.0",
 		"remark-sectionize": "^2.1.0",
 		"tailwindcss": "^4.1.13",
 		"unist-util-visit": "^5.0.0"

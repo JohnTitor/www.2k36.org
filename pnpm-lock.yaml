@@ -254,8 +254,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.0(supports-color@7.2.0)
       remark-link-card-plus:
-        specifier: ^0.8.0
-        version: 0.8.2(supports-color@7.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(supports-color@7.2.0)
       remark-sectionize:
         specifier: ^2.1.0
         version: 2.1.0
@@ -2399,8 +2399,8 @@ packages:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
 
-  iconv-lite@0.7.2:
-    resolution: {integrity: sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==}
+  iconv-lite@0.7.3:
+    resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
     engines: {node: '>=0.10.0'}
 
   ieee754@1.2.1:
@@ -2846,8 +2846,8 @@ packages:
   oniguruma-to-es@4.3.6:
     resolution: {integrity: sha512-csuQ9x3Yr0cEIs/Zgx/OEt9iBw9vqIunAPQkx19R/fiMq2oGVTgcMqO/V3Ybqefr1TBvosI6jU539ksaBULJyA==}
 
-  open-graph-scraper@6.12.0:
-    resolution: {integrity: sha512-x0fS3eHxdCox+rFBhQSVe+qBznSPn1pspp8A4BoaVEkiECZEwagEb8z06swLfaFFE2gefj1BvEBeJmdeGTDnYw==}
+  open-graph-scraper@6.13.0:
+    resolution: {integrity: sha512-b9/HlkMMQDnw9kiKr5BfWUBwTfAzCP/fEyhhOlwB9JH0aeiYMqYYsSLt/NeG2oeDGbFoDK86UuDNtJss+U5hcw==}
     engines: {node: '>=20.0.0'}
 
   oxfmt@0.78.0:
@@ -3084,8 +3084,8 @@ packages:
     resolution: {integrity: sha512-bI3E4Oj1pKY3ym2IQrrVCdORgEu0+mSrWgpCYFNy8QvytfnLs/nAacVPjkWU/JzDMUiQio2k4nTFP7bsIr9TSA==}
     engines: {pnpm: '>=9.0.0'}
 
-  remark-link-card-plus@0.8.2:
-    resolution: {integrity: sha512-hInHUWi1oKwyGhbQlDra7z2Jxi6I6NgMSWgPNC64kJdTgdeHLuXE9mfgEV2Mug3P+vzyY0FQHbe+XLqWI+l40Q==}
+  remark-link-card-plus@0.9.0:
+    resolution: {integrity: sha512-3A33EA1YhG6bOLBxBZIYSpFGQQAQbLRUU0iUdqIiO41iAZRZZPsTJ7YHLEMYnKnRwxyWgqLvjFE/otVwk+Yg7Q==}
     engines: {node: '>=22.13.0'}
 
   remark-mdx@3.1.1:
@@ -3373,8 +3373,8 @@ packages:
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
-  undici@7.29.0:
-    resolution: {integrity: sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==}
+  undici@7.30.2:
+    resolution: {integrity: sha512-mLyPQnHwUxaM/rideoK/+KL8DaAJLRl4aBCfmX444aCSLnIaomqPLtNRe2jdCYcsk5wZzXrDIQC8ZeYNRAYyIA==}
     engines: {node: '>=20.18.1'}
 
   undici@8.10.0:
@@ -5207,7 +5207,7 @@ snapshots:
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 7.1.0
       parse5-parser-stream: 7.1.2
-      undici: 7.29.0
+      undici: 7.30.2
       whatwg-mimetype: 4.0.0
 
   chokidar@5.0.0:
@@ -5826,7 +5826,7 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  iconv-lite@0.7.2:
+  iconv-lite@0.7.3:
     dependencies:
       safer-buffer: 2.1.2
 
@@ -6537,12 +6537,12 @@ snapshots:
       regex: 6.1.0
       regex-recursion: 6.0.2
 
-  open-graph-scraper@6.12.0:
+  open-graph-scraper@6.13.0:
     dependencies:
       chardet: 2.2.0
       cheerio: 1.2.0
-      iconv-lite: 0.7.2
-      undici: 7.29.0
+      iconv-lite: 0.7.3
+      undici: 7.30.2
 
   oxfmt@0.78.0(@astrojs/compiler-rs@0.5.2)(svelte@5.57.2):
     dependencies:
@@ -6849,11 +6849,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remark-link-card-plus@0.8.2(supports-color@7.2.0):
+  remark-link-card-plus@0.9.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       file-type: 22.3.0(supports-color@7.2.0)
-      open-graph-scraper: 6.12.0
+      open-graph-scraper: 6.13.0
       sanitize-html: 2.18.2
       unified: 11.0.5
       unist-util-visit: 5.2.0
@@ -7263,7 +7263,7 @@ snapshots:
 
   undici-types@8.9.0: {}
 
-  undici@7.29.0: {}
+  undici@7.30.2: {}
 
   undici@8.10.0: {}
 
