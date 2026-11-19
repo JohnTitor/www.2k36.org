@@ -204,7 +204,7 @@ importers:
         version: 1.2.16
       '@iconify-json/material-symbols':
         specifier: ^1.2.24
-        version: 1.2.100
+        version: 1.2.101
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.20(tailwindcss@4.3.5)
@@ -786,8 +786,8 @@ packages:
   '@iconify-json/line-md@1.2.16':
     resolution: {integrity: sha512-esHPUQUp30NyqJWa7MNu6ExdG8z/aEFC5r56rVyRGhtJ7acOme6YtYPnDOgVu6p+kk24rM8602xkFuBC6g6x+w==}
 
-  '@iconify-json/material-symbols@1.2.100':
-    resolution: {integrity: sha512-lo3JulvaCnCCYVZHfld4kQ2YNkN55xCtLGplVgETx0n6nRR8IknMphknSqIpFhT/4J3upZJmLBTQT6cyQn8ThQ==}
+  '@iconify-json/material-symbols@1.2.101':
+    resolution: {integrity: sha512-k2cOWfrsLM9TpCr34UZ34toSotApzFDxh+DX7tVk4EkqO2XhoiuDPs1oAbiZSJQQ3JHjhkS9kBlMFa36yYda0Q==}
 
   '@iconify/tools@5.0.12':
     resolution: {integrity: sha512-aFPwSFmFphUPVjNLUkgxgUPSPVgTEEjv0mE7NgvfoQBuE5TtsMrKa4HTY65cM5oXZ2a1xKQcW/RKhiOKEiAarw==}
@@ -4216,7 +4216,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/material-symbols@1.2.100':
+  '@iconify-json/material-symbols@1.2.101':
     dependencies:
       '@iconify/types': 2.0.0
 
