@@ -29,7 +29,7 @@ The benchmarks below come from individual PRs during v9 development. They compar
 
 For details, see the [migration guide](https://github.com/notify-rs/notify/blob/main/docs/UPGRADING_V8_TO_V9.md).
 
-## Faster individual file watches on Windows
+### Faster individual file watches on Windows
 
 When you watch a single file on Windows, notify requests change notifications for the file's parent directory.
 In v8, registering `assets/a.png` and `assets/b.png` separately meant opening `assets` twice, with a separate set of handles and a read buffer each time.
@@ -47,7 +47,7 @@ We got the following results on Windows.
 The nice thing here is that we get rid of the overhead of keeping separate handles for each file.
 Editors, for example, watch individual files this way, so I think they stand to benefit quite a bit.
 
-## Registering and removing watches on large directory trees with inotify and kqueue
+### Registering and removing watches on large directory trees with inotify and kqueue
 
 On Linux, when you watch a directory recursively with inotify, notify walks the tree and registers each directory with the kernel.
 It used to look up file types again and recalculate paths to include in events. It now reuses both values from the walk.
@@ -59,7 +59,7 @@ In a release build, generating just the metadata for one root and its 100,000 en
 When removing a watch (`unwatch` in notify), inotify and kqueue can now use an index to look up watches under the target path.
 For example, if you're watching a whole project and `cargo clean` removes `target`, cleaning up those watches no longer involves checking the watches under `src` one by one.
 
-## Streams and batch updates to watched paths
+### Streams and batch updates to watched paths
 
 The API for adding and removing watches in a batch has changed from `paths_mut()` and `commit()` in v8 to `Watcher::update_paths` across all backends.
 We added batch updates fairly quickly in v8. The API design wasn't ideal, so we cleaned it up when we revisited the implementation.
@@ -85,7 +85,7 @@ The returned `UpdatePathsError` carries the failed `assets` operation in `origin
 Internally, backends such as inotify and FSEvents now batch the changes from a single `update_paths` call, however many independent roots you add.
 FSEvents rebuilds its stream at most once for the whole batch, and inotify needs just one request to its watcher thread.
 
-## Matching events to watched paths on Linux and Windows
+### Matching events to watched paths on Linux and Windows
 
 In v8 on Linux and Windows, you could register `src` as a relative path and still get absolute paths in events.
 In v9, event paths use the same format as the path you registered.
@@ -97,7 +97,7 @@ If one watcher monitors several projects, you can now use `watch_with` and `Watc
 You can read that ID from events and errors associated with the watch using `Event::user_data()` and `Error::user_data()`.
 That makes it easy to tell which project an incoming event belongs to.
 
-## File save events and the 0.8 debouncers
+### File save events and the 0.8 debouncers
 
 Alongside notify, we released version 0.8.0 of `notify-debouncer-mini` and `notify-debouncer-full`, which group events that arrive close together.
 There are three highlights here.
