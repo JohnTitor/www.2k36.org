@@ -265,7 +265,7 @@ importers:
         version: 2.1.0(supports-color@7.2.0)
       remark-link-card-plus:
         specifier: ^0.9.0
-        version: 0.9.0(supports-color@7.2.0)
+        version: 0.9.1(supports-color@7.2.0)
       remark-sectionize:
         specifier: ^2.1.0
         version: 2.1.0
@@ -3174,8 +3174,8 @@ packages:
     resolution: {integrity: sha512-bI3E4Oj1pKY3ym2IQrrVCdORgEu0+mSrWgpCYFNy8QvytfnLs/nAacVPjkWU/JzDMUiQio2k4nTFP7bsIr9TSA==}
     engines: {pnpm: '>=9.0.0'}
 
-  remark-link-card-plus@0.9.0:
-    resolution: {integrity: sha512-3A33EA1YhG6bOLBxBZIYSpFGQQAQbLRUU0iUdqIiO41iAZRZZPsTJ7YHLEMYnKnRwxyWgqLvjFE/otVwk+Yg7Q==}
+  remark-link-card-plus@0.9.1:
+    resolution: {integrity: sha512-SmiGINYzCyjjEVz+qZQfVOPoNc8NRangoX4kN5Vg1QJgmjJ5vxF3hR0O9TU/GJQx0D0+mQ0tw0nplTUwe14Y+A==}
     engines: {node: '>=22.13.0'}
 
   remark-mdx@3.1.1:
@@ -6939,7 +6939,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remark-link-card-plus@0.9.0(supports-color@7.2.0):
+  remark-link-card-plus@0.9.1(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       file-type: 22.3.0(supports-color@7.2.0)
